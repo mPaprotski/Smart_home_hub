@@ -1,0 +1,189 @@
+{
+  "recorded_at_utc": "2026-10-25T21:02:18.030778+00:00",
+  "scope": "days011-015 software skeleton; synthetic development only",
+  "source_state": "uncommitted workspace; no push",
+  "toolchain": {
+    "go": "1.27.3",
+    "python": "3.12.3",
+    "node": "22.23.4 (project-local)",
+    "npm": "9.2.0",
+    "docker": "29.1.3",
+    "compose": "2.37.1"
+  },
+  "tests": {
+    "go_functions": 23,
+    "go_race": "PASS-HOST",
+    "python_cases": 14,
+    "python_wheel_install": "PASS-HOST",
+    "frontend_unit": "N/A: static shell without business logic",
+    "frontend_lint_types_format_build": "PASS-HOST",
+    "openapi": "PASS-HOST",
+    "native": "PASS-SIM",
+    "compose": "PASS-COMPOSE",
+    "clean_source_quickstart": "PASS-HOST",
+    "workflow_actionlint": "PASS-HOST"
+  },
+  "remote_ci": {
+    "status": "BLOCKED",
+    "reason": "No commit/push or remote workflow run; publication excluded from this stage"
+  },
+  "hardware_m0": "M0_NOT_READY: no configured Raspberry Pi target",
+  "milestone_m1": "NOT_COMPLETE: SQLite/auth/WS/full simulation UI are later stages",
+  "original_tz_sha256": "84bf6c3c61b2feff16a23a12226b9646d33b4ffde3754b9c0082db0e4c57ec09",
+  "checks": {
+    "D11-01": {
+      "status": "PASS-HOST",
+      "report": "../../DAY_011_RESULT.md"
+    },
+    "D11-02": {
+      "status": "PASS-HOST",
+      "report": "../../DAY_011_RESULT.md"
+    },
+    "D11-03": {
+      "status": "PASS-HOST",
+      "report": "../../DAY_011_RESULT.md"
+    },
+    "D11-04": {
+      "status": "PASS-HOST",
+      "report": "../../DAY_011_RESULT.md"
+    },
+    "D11-05": {
+      "status": "PASS-HOST",
+      "report": "../../DAY_011_RESULT.md"
+    },
+    "D11-06": {
+      "status": "PASS-HOST",
+      "report": "../../DAY_011_RESULT.md"
+    },
+    "D12-01": {
+      "status": "PASS-HOST",
+      "report": "../../DAY_012_RESULT.md"
+    },
+    "D12-02": {
+      "status": "PASS-HOST",
+      "report": "../../DAY_012_RESULT.md"
+    },
+    "D12-03": {
+      "status": "PASS-HOST",
+      "report": "../../DAY_012_RESULT.md"
+    },
+    "D12-04": {
+      "status": "PASS-HOST",
+      "report": "../../DAY_012_RESULT.md"
+    },
+    "D12-05": {
+      "status": "PASS-HOST",
+      "report": "../../DAY_012_RESULT.md"
+    },
+    "D12-06": {
+      "status": "PASS-HOST",
+      "report": "../../DAY_012_RESULT.md"
+    },
+    "D13-01": {
+      "status": "PASS-HOST",
+      "report": "../../DAY_013_RESULT.md"
+    },
+    "D13-02": {
+      "status": "PASS-HOST",
+      "report": "../../DAY_013_RESULT.md"
+    },
+    "D13-03": {
+      "status": "PASS-HOST",
+      "report": "../../DAY_013_RESULT.md"
+    },
+    "D13-04": {
+      "status": "PASS-HOST",
+      "report": "../../DAY_013_RESULT.md"
+    },
+    "D13-05": {
+      "status": "PASS-HOST",
+      "report": "../../DAY_013_RESULT.md"
+    },
+    "D13-06": {
+      "status": "PASS-HOST",
+      "report": "../../DAY_013_RESULT.md"
+    },
+    "D13-07": {
+      "status": "PASS-HOST",
+      "report": "../../DAY_013_RESULT.md"
+    },
+    "D14-01": {
+      "status": "PASS-HOST",
+      "report": "../../DAY_014_RESULT.md"
+    },
+    "D14-02": {
+      "status": "PASS-HOST",
+      "report": "../../DAY_014_RESULT.md"
+    },
+    "D14-03": {
+      "status": "PASS-HOST",
+      "report": "../../DAY_014_RESULT.md"
+    },
+    "D14-04": {
+      "status": "PASS-HOST",
+      "report": "../../DAY_014_RESULT.md"
+    },
+    "D14-05": {
+      "status": "PASS-HOST",
+      "report": "../../DAY_014_RESULT.md"
+    },
+    "D14-06": {
+      "status": "PASS-HOST",
+      "report": "../../DAY_014_RESULT.md"
+    },
+    "D14-07": {
+      "status": "PASS-HOST",
+      "report": "../../DAY_014_RESULT.md"
+    },
+    "D15-01": {
+      "status": "PASS-HOST",
+      "report": "../../DAY_015_RESULT.md"
+    },
+    "D15-02": {
+      "status": "PASS-SIM",
+      "report": "../../DAY_015_RESULT.md"
+    },
+    "D15-03": {
+      "status": "PASS-SIM",
+      "report": "../../DAY_015_RESULT.md"
+    },
+    "D15-04": {
+      "status": "PASS-SIM",
+      "report": "../../DAY_015_RESULT.md"
+    },
+    "D15-05": {
+      "status": "PASS-SIM",
+      "report": "../../DAY_015_RESULT.md"
+    },
+    "D15-06": {
+      "status": "PASS-COMPOSE",
+      "report": "../../DAY_015_RESULT.md"
+    },
+    "D15-07": {
+      "status": "PASS-HOST",
+      "report": "../../DAY_015_RESULT.md"
+    },
+    "D15-08": {
+      "status": "PASS-HOST",
+      "report": "../../DAY_015_RESULT.md"
+    },
+    "D15-09": {
+      "status": "BLOCKED",
+      "report": "../../DAY_015_RESULT.md"
+    },
+    "D15-10": {
+      "status": "DOC-ONLY",
+      "report": "../../DAY_015_RESULT.md"
+    }
+  },
+  "evidence_files": [
+    "quality.log",
+    "clean-source.log",
+    "native-smoke.json",
+    "config-smoke.json",
+    "compose-smoke.json",
+    "docker-build.log",
+    "event-bus-benchmark.txt",
+    "source-manifest.json"
+  ]
+}

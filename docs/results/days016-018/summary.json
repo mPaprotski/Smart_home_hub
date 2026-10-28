@@ -1,0 +1,182 @@
+{
+  "recorded_local": "2026-10-26T16:28:54.604908+03:00",
+  "timezone": "Europe/Minsk",
+  "scope": "days016-018 SQLite/commands/credential-verifier software slice; sessions remain day19",
+  "status": "IMPLEMENTED_AND_LOCALLY_VERIFIED",
+  "source_state": "uncommitted workspace, no push",
+  "tests": {
+    "go_functions": 50,
+    "meaningful_go_tests_excluding_process_helper": 49,
+    "python_cases": 14,
+    "go_race": "PASS-HOST",
+    "openapi_frontend_python_checks_builds": "PASS-HOST",
+    "native_persistent": "PASS-SIM",
+    "legacy_simulation": "PASS-SIM",
+    "persistent_compose": "PASS-COMPOSE"
+  },
+  "sqlite": {
+    "driver": "modernc.org/sqlite v1.61.0",
+    "embedded_version": "3.54.1",
+    "migrations": 3,
+    "wal": true,
+    "foreign_keys": true,
+    "synchronous": "FULL",
+    "startup_write_probe": true
+  },
+  "auth": {
+    "stage": "CREDENTIALS_ONLY",
+    "http_valid_credentials_status": 503,
+    "session_issuer": "NOT_IMPLEMENTED day19",
+    "argon2id_memory_kib": 19456,
+    "argon2id_iterations": 2,
+    "argon2id_parallelism": 1,
+    "hash_jobs_max": 1,
+    "persistent_account_attempts": true
+  },
+  "target": {
+    "board": "Raspberry Pi 4 Model B",
+    "ram_gb": 2,
+    "only_available_board": true,
+    "spec_version": "1.1",
+    "spec_sha256": "0a3cd42efe59990cc25157910370871d9c37ae2b33c9d0b6bfd405668803ee6c"
+  },
+  "container": {
+    "memory_limit_mib": 128,
+    "memory_swap_total_mib": 128,
+    "go_soft_memory_mib": 96,
+    "peak_memory_bytes": 68845568,
+    "peak_memory_mib": 65.66,
+    "host_architecture": "x86_64, not Raspberry Pi",
+    "cleanup_verified": true
+  },
+  "vulnerability_review": {
+    "tool": "govulncheck v1.9.0",
+    "reachable_vulnerabilities": 0,
+    "affected_imported_packages": 0,
+    "unimported_module_advisory": "GO-2026-5932 x/crypto/openpgp; not imported; fix N/A"
+  },
+  "checks": {
+    "D16-01": {
+      "status": "PASS-HOST",
+      "scope": "implemented software slice"
+    },
+    "D16-02": {
+      "status": "PASS-HOST",
+      "scope": "implemented software slice"
+    },
+    "D16-03": {
+      "status": "PASS-HOST",
+      "scope": "implemented software slice"
+    },
+    "D16-04": {
+      "status": "PASS-HOST",
+      "scope": "implemented software slice"
+    },
+    "D16-05": {
+      "status": "PASS-HOST",
+      "scope": "implemented software slice"
+    },
+    "D16-06": {
+      "status": "PASS-HOST",
+      "scope": "implemented software slice"
+    },
+    "D16-07": {
+      "status": "PASS-HOST",
+      "scope": "implemented software slice"
+    },
+    "D16-08": {
+      "status": "PASS-COMPOSE",
+      "scope": "implemented software slice"
+    },
+    "D16-09": {
+      "status": "PASS-HOST",
+      "scope": "implemented software slice"
+    },
+    "D17-01": {
+      "status": "PASS-HOST",
+      "scope": "implemented software slice"
+    },
+    "D17-02": {
+      "status": "PASS-HOST",
+      "scope": "implemented software slice"
+    },
+    "D17-03": {
+      "status": "PASS-HOST",
+      "scope": "implemented software slice"
+    },
+    "D17-04": {
+      "status": "PASS-HOST",
+      "scope": "implemented software slice"
+    },
+    "D17-05": {
+      "status": "PASS-HOST",
+      "scope": "implemented synchronous setting/permission/rollback cases PASS; absent physical adapters/pending scheduler/batch engine N/A, deferred domain stages"
+    },
+    "D17-06": {
+      "status": "PASS-HOST",
+      "scope": "implemented software slice"
+    },
+    "D17-07": {
+      "status": "PASS-HOST",
+      "scope": "implemented software slice"
+    },
+    "D17-08": {
+      "status": "PASS-HOST",
+      "scope": "implemented synchronous setting/permission/rollback cases PASS; absent physical adapters/pending scheduler/batch engine N/A, deferred domain stages"
+    },
+    "D17-09": {
+      "status": "PASS-HOST",
+      "scope": "implemented synchronous setting/permission/rollback cases PASS; absent physical adapters/pending scheduler/batch engine N/A, deferred domain stages"
+    },
+    "D17-10": {
+      "status": "PASS-HOST",
+      "scope": "implemented software slice"
+    },
+    "D18-01": {
+      "status": "PASS-HOST",
+      "scope": "implemented software slice"
+    },
+    "D18-02": {
+      "status": "PASS-HOST",
+      "scope": "implemented software slice"
+    },
+    "D18-03": {
+      "status": "PASS-HOST/COMPOSE",
+      "scope": "implemented software slice"
+    },
+    "D18-04": {
+      "status": "PASS-HOST",
+      "scope": "implemented software slice"
+    },
+    "D18-05": {
+      "status": "PASS-SIM",
+      "scope": "implemented software slice"
+    },
+    "D18-06": {
+      "status": "PASS-HOST/COMPOSE",
+      "scope": "x86 benchmark and cgroup peak PASS; actual Pi2GB latency BLOCKED"
+    },
+    "D18-07": {
+      "status": "PASS-SIM",
+      "scope": "implemented software slice"
+    },
+    "D18-08": {
+      "status": "PASS-HOST/COMPOSE",
+      "scope": "implemented software slice"
+    },
+    "D18-09": {
+      "status": "PASS-SIM",
+      "scope": "implemented software slice"
+    },
+    "D18-10": {
+      "status": "PASS-SIM",
+      "scope": "implemented software slice"
+    }
+  },
+  "remaining_gates": {
+    "sessions_csrf_tokens": "days019-020",
+    "remote_ci": "NOT_RUN: source not committed/pushed",
+    "hardware_m0": "NOT_READY: no configured SSH target or physical2GB measurements",
+    "full_lighting_automation_hardware": "future domain modules"
+  }
+}

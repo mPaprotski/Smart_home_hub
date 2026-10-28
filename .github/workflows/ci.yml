@@ -1,0 +1,66 @@
+name: development-quality
+on:
+  push:
+  pull_request:
+permissions:
+  contents: read
+concurrency:
+  group: development-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  quality:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-go@40f1582b2485089dde7abd97c1529aa768e1baff # v5
+        with:
+          go-version-file: go.mod
+          cache: false
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with:
+          node-version: '22.23.4'
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5
+        with:
+          python-version: '3.12.3'
+      - name: Install locked dependencies
+        run: |
+          python -m venv .venv
+          .venv/bin/python -m pip install -r ml/requirements-dev.lock
+          npm --prefix frontend ci
+          go mod download
+      - name: Local quality equivalent
+        run: make check
+      - name: Native process smoke
+        run: make smoke
+      - name: Workflow syntax
+        run: |
+          GOBIN="$PWD/.tools/bin" go install github.com/rhysd/actionlint/cmd/actionlint@v1.7.7
+          .tools/bin/actionlint
+      - name: Compose syntax
+        run: make compose-check
+      - name: Container smoke
+        run: |
+          docker compose -p smarthome-d15 -f deploy/docker/compose.dev.yaml build
+          .venv/bin/python scripts/compose_smoke.py
+
+      - name: Persistent native smoke
+        run: make smoke-persistence
+      - name: Persistent Compose smoke
+        run: |
+          make compose-persistence-check
+          docker compose -p smarthome-d18-smoke -f deploy/docker/compose.dev.yaml -f deploy/docker/compose.sqlite.yaml build
+          .venv/bin/python scripts/persistence_compose_smoke.py
+
+      - name: Go vulnerability review
+        run: |
+          GOBIN="$PWD/.tools/bin" go install golang.org/x/vuln/cmd/govulncheck@v1.9.0
+          .tools/bin/govulncheck ./cmd/... ./internal/... ./telegram/...
+
+      - name: HTTPS session and token smoke
+        run: |
+          make smoke-auth compose-auth-check
+          docker compose -p smarthome-d21-smoke -f deploy/docker/compose.dev.yaml -f deploy/docker/compose.sqlite.yaml build
+          .venv/bin/python scripts/auth_compose_smoke.py

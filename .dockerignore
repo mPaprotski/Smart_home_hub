@@ -1,0 +1,16 @@
+**
+!go.mod
+!go.sum
+!cmd/
+!cmd/**
+!internal/
+!internal/**
+!config.example.yaml
+!deploy/
+!deploy/docker/
+!deploy/docker/Dockerfile.dev
+
+!configs/
+!configs/sqlite.dev.yaml
+
+!configs/auth.dev.yaml

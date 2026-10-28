@@ -1,0 +1,70 @@
+{
+  "status": "illustrative_scenarios",
+  "assumptions": {
+    "led_max_ma": 60.0,
+    "led_idle_ma": 1.0,
+    "aux_a": 0.1,
+    "headroom": 1.25,
+    "voltage": 5.0,
+    "pi_and_its_usb_peripherals_excluded": true,
+    "current_and_ratings_require_actual_datasheet_and_measurement": true
+  },
+  "scenarios": [
+    {
+      "monitor_leds": 30,
+      "desk_leds": 30,
+      "total_leds": 60,
+      "monitor_full_white_a": 1.8,
+      "desk_full_white_a": 1.8,
+      "led_full_white_a": 3.6,
+      "led_idle_a": 0.06,
+      "led_full_white_w": 18.0,
+      "auxiliary_a": 0.1,
+      "total_load_a": 3.7,
+      "psu_required_a_with_headroom": 4.625,
+      "psu_required_w_with_headroom": 23.125
+    },
+    {
+      "monitor_leds": 120,
+      "desk_leds": 120,
+      "total_leds": 240,
+      "monitor_full_white_a": 7.2,
+      "desk_full_white_a": 7.2,
+      "led_full_white_a": 14.4,
+      "led_idle_a": 0.24,
+      "led_full_white_w": 72.0,
+      "auxiliary_a": 0.1,
+      "total_load_a": 14.5,
+      "psu_required_a_with_headroom": 18.125,
+      "psu_required_w_with_headroom": 90.625
+    },
+    {
+      "monitor_leds": 180,
+      "desk_leds": 120,
+      "total_leds": 300,
+      "monitor_full_white_a": 10.8,
+      "desk_full_white_a": 7.2,
+      "led_full_white_a": 18.0,
+      "led_idle_a": 0.3,
+      "led_full_white_w": 90.0,
+      "auxiliary_a": 0.1,
+      "total_load_a": 18.1,
+      "psu_required_a_with_headroom": 22.625,
+      "psu_required_w_with_headroom": 113.125
+    },
+    {
+      "monitor_leds": 180,
+      "desk_leds": 180,
+      "total_leds": 360,
+      "monitor_full_white_a": 10.8,
+      "desk_full_white_a": 10.8,
+      "led_full_white_a": 21.6,
+      "led_idle_a": 0.36,
+      "led_full_white_w": 108.0,
+      "auxiliary_a": 0.1,
+      "total_load_a": 21.7,
+      "psu_required_a_with_headroom": 27.125,
+      "psu_required_w_with_headroom": 135.625
+    }
+  ]
+}

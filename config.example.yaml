@@ -1,0 +1,37 @@
+# Synthetic simulation only. These LED counts are not room measurements.
+profile: development
+adapter_mode: simulation
+storage: memory_fake
+log_level: INFO
+server:
+  host: 127.0.0.1
+  port: 8080
+  read_header_timeout: 5s
+  shutdown_timeout: 5s
+events:
+  queue: 64
+  max_subscriptions: 128
+  max_payload_bytes: 16384
+simulation:
+  seed: 42
+  tick: 100ms
+components:
+  ml_enabled: false
+  mqtt_enabled: false
+lighting:
+  capacity: 8
+  global_max_current_amp: 1.0
+  zones:
+    - id: monitor.backlight
+      offset: 0
+      count: 4
+      kind: strip
+      side_counts: [1, 1, 1, 1]
+      brightness: 0.2
+      max_current_amp: 0.5
+    - id: desk.wall
+      offset: 4
+      count: 4
+      kind: strip
+      brightness: 0.2
+      max_current_amp: 0.5

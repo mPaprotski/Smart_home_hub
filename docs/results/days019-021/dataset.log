@@ -1,0 +1,5 @@
+=== RUN   TestBoundedIndexedDatasetAndAuditCutoff
+    domain_test.go:193: 100000-row fixture insert/read/plan/cleanup=2.861955735s, returned=100, plan=[SEARCH habit_observations USING COVERING INDEX habit_owner_time (user_id=? AND occurred_at>?)]
+--- PASS: TestBoundedIndexedDatasetAndAuditCutoff (3.20s)
+PASS
+ok  	github.com/mPaprotski/Smart_home_hub/internal/storage	3.202s

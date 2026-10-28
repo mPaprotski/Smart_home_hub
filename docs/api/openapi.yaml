@@ -1,0 +1,1075 @@
+openapi: 3.0.3
+info:
+  title: Smart Home Hub development API
+  version: 0.0.0
+  description: 'Days 11–21: diagnostics, explicit HTTPS session/token profile, timezone
+    command gateway and auth-only WebSocket. Hardware is simulated; production deployment
+    and dashboard event stream remain unavailable.'
+servers:
+- url: https://localhost:8443
+  description: Explicit auth.dev profile; locally trusted TLS certificate required
+- url: http://127.0.0.1:8080
+  description: Legacy diagnostics profile; session routes disabled
+paths:
+  /health:
+    get:
+      operationId: getHealth
+      summary: Process liveness, independent of critical dependencies
+      responses:
+        '200':
+          description: Process live
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Liveness'
+          headers:
+            X-Request-ID:
+              schema:
+                type: string
+                maxLength: 64
+        '503':
+          description: Process stopping
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Liveness'
+          headers:
+            X-Request-ID:
+              schema:
+                type: string
+                maxLength: 64
+        '500':
+          $ref: '#/components/responses/Internal'
+        '405':
+          description: 'Non-GET method; Allow: GET'
+          headers:
+            Allow:
+              schema:
+                type: string
+                enum:
+                - GET
+            X-Request-ID:
+              schema:
+                type: string
+                maxLength: 64
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      parameters:
+      - name: X-Request-ID
+        in: header
+        required: false
+        schema:
+          type: string
+          pattern: ^[A-Za-z0-9_-]{1,64}$
+        description: Invalid/missing values are replaced with a random ID.
+  /ready:
+    get:
+      operationId: getReadiness
+      summary: Explicit profile dependencies and nonpersistent simulation readiness
+      responses:
+        '200':
+          description: Critical dependencies ready; optional dependencies may be degraded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Readiness'
+          headers:
+            X-Request-ID:
+              schema:
+                type: string
+                maxLength: 64
+        '503':
+          description: Critical dependency unavailable/stale/not implemented or process
+            stopping
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Readiness'
+          headers:
+            X-Request-ID:
+              schema:
+                type: string
+                maxLength: 64
+        '500':
+          $ref: '#/components/responses/Internal'
+        '405':
+          description: 'Non-GET method; Allow: GET'
+          headers:
+            Allow:
+              schema:
+                type: string
+                enum:
+                - GET
+            X-Request-ID:
+              schema:
+                type: string
+                maxLength: 64
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      parameters:
+      - name: X-Request-ID
+        in: header
+        required: false
+        schema:
+          type: string
+          pattern: ^[A-Za-z0-9_-]{1,64}$
+        description: Invalid/missing values are replaced with a random ID.
+  /metrics:
+    get:
+      operationId: getMetrics
+      summary: Prometheus exposition; bounded route labels and milliseconds for latency
+      responses:
+        '200':
+          description: Counters and cumulative latency histogram (snapshot before
+            current request)
+          content:
+            text/plain:
+              schema:
+                type: string
+          headers:
+            X-Request-ID:
+              schema:
+                type: string
+                maxLength: 64
+        '500':
+          $ref: '#/components/responses/Internal'
+        '405':
+          description: 'Non-GET method; Allow: GET'
+          headers:
+            Allow:
+              schema:
+                type: string
+                enum:
+                - GET
+            X-Request-ID:
+              schema:
+                type: string
+                maxLength: 64
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      parameters:
+      - name: X-Request-ID
+        in: header
+        required: false
+        schema:
+          type: string
+          pattern: ^[A-Za-z0-9_-]{1,64}$
+        description: Invalid/missing values are replaced with a random ID.
+  /api/v1/version:
+    get:
+      operationId: getVersion
+      responses:
+        '200':
+          description: Build metadata and explicit limitations
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Version'
+          headers:
+            X-Request-ID:
+              schema:
+                type: string
+                maxLength: 64
+        '500':
+          $ref: '#/components/responses/Internal'
+        '405':
+          description: 'Non-GET method; Allow: GET'
+          headers:
+            Allow:
+              schema:
+                type: string
+                enum:
+                - GET
+            X-Request-ID:
+              schema:
+                type: string
+                maxLength: 64
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      parameters:
+      - name: X-Request-ID
+        in: header
+        required: false
+        schema:
+          type: string
+          pattern: ^[A-Za-z0-9_-]{1,64}$
+        description: Invalid/missing values are replaced with a random ID.
+  /api/v1/auth/login:
+    post:
+      operationId: login
+      summary: Issue a browser session in the explicit HTTPS auth profile
+      description: 'Body <=4096 bytes, password <=1024 UTF-8 bytes. Requires exact
+        Origin and X-Hub-Request: 1. Legacy verifier profile still returns 503 without
+        a cookie.'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              additionalProperties: false
+              required:
+              - username
+              - password
+              properties:
+                username:
+                  type: string
+                  minLength: 1
+                  maxLength: 128
+                password:
+                  type: string
+                  minLength: 1
+                  maxLength: 1024
+                  writeOnly: true
+      responses:
+        '400':
+          description: Malformed, unknown fields or oversized input
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Invalid credentials, unknown or disabled account
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '405':
+          description: Only POST supported
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          headers:
+            Allow:
+              schema:
+                type: string
+                enum:
+                - POST
+        '429':
+          description: Account, peer-IP or global hashing limit reached
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+          headers:
+            Retry-After:
+              schema:
+                type: string
+        '503':
+          description: Storage/auth unavailable, or legacy credentials-only profile
+            without an issuer
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '200':
+          description: Session issued; secret only in Secure HttpOnly cookie
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: false
+                properties:
+                  user_id: &id001
+                    type: string
+                  csrf_token: *id001
+                required:
+                - user_id
+                - csrf_token
+          headers:
+            Set-Cookie:
+              schema: *id001
+              description: __Host-shh_session; Secure; HttpOnly; SameSite=Lax; Path=/;
+                Max-Age=43200
+        '403':
+          description: Request rejected; no credential proof or dependency details
+            returned
+          content: &id002
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      parameters:
+      - &id003
+        name: Origin
+        in: header
+        required: false
+        schema:
+          type: string
+          format: uri
+        description: Exact configured public HTTPS origin; required for session mutations
+          and WebSocket.
+      - name: X-Hub-Request
+        in: header
+        required: true
+        schema:
+          type: string
+          enum:
+          - '1'
+  /api/v1/auth/me:
+    get:
+      operationId: currentPrincipal
+      summary: currentPrincipal
+      security:
+      - SessionCookie: []
+      - BearerToken: []
+      responses:
+        '200':
+          description: currentPrincipal
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: false
+                properties:
+                  user_id: *id001
+                  credential_kind:
+                    type: string
+                    enum:
+                    - session
+                    - token
+                required:
+                - user_id
+                - credential_kind
+        '400':
+          description: Request rejected; no credential proof or dependency details
+            returned
+          content: *id002
+        '401':
+          description: Request rejected; no credential proof or dependency details
+            returned
+          content: *id002
+        '403':
+          description: Request rejected; no credential proof or dependency details
+            returned
+          content: *id002
+        '405':
+          description: Request rejected; no credential proof or dependency details
+            returned
+          content: *id002
+        '429':
+          description: Request rejected; no credential proof or dependency details
+            returned
+          content: *id002
+        '503':
+          description: Request rejected; no credential proof or dependency details
+            returned
+          content: *id002
+      parameters:
+      - *id003
+  /api/v1/auth/csrf:
+    get:
+      operationId: sessionCsrf
+      summary: sessionCsrf
+      security:
+      - SessionCookie: []
+      responses:
+        '200':
+          description: sessionCsrf
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: false
+                properties:
+                  csrf_token: *id001
+                required:
+                - csrf_token
+        '400':
+          description: Request rejected; no credential proof or dependency details
+            returned
+          content: *id002
+        '401':
+          description: Request rejected; no credential proof or dependency details
+            returned
+          content: *id002
+        '403':
+          description: Request rejected; no credential proof or dependency details
+            returned
+          content: *id002
+        '405':
+          description: Request rejected; no credential proof or dependency details
+            returned
+          content: *id002
+        '429':
+          description: Request rejected; no credential proof or dependency details
+            returned
+          content: *id002
+        '503':
+          description: Request rejected; no credential proof or dependency details
+            returned
+          content: *id002
+      parameters:
+      - *id003
+  /api/v1/auth/logout:
+    post:
+      operationId: logout
+      summary: logout
+      security:
+      - SessionCookie: []
+      responses:
+        '204':
+          description: logout
+        '400':
+          description: Request rejected; no credential proof or dependency details
+            returned
+          content: *id002
+        '401':
+          description: Request rejected; no credential proof or dependency details
+            returned
+          content: *id002
+        '403':
+          description: Request rejected; no credential proof or dependency details
+            returned
+          content: *id002
+        '405':
+          description: Request rejected; no credential proof or dependency details
+            returned
+          content: *id002
+        '429':
+          description: Request rejected; no credential proof or dependency details
+            returned
+          content: *id002
+        '503':
+          description: Request rejected; no credential proof or dependency details
+            returned
+          content: *id002
+      parameters:
+      - *id003
+      - &id004
+        name: X-CSRF-Token
+        in: header
+        required: false
+        schema: *id001
+        description: Required for session-authenticated mutations; token callers must
+          omit cookies.
+  /api/v1/auth/revoke-all:
+    post:
+      operationId: revokeAllSessions
+      summary: revokeAllSessions
+      security:
+      - SessionCookie: []
+      responses:
+        '204':
+          description: revokeAllSessions
+        '400':
+          description: Request rejected; no credential proof or dependency details
+            returned
+          content: *id002
+        '401':
+          description: Request rejected; no credential proof or dependency details
+            returned
+          content: *id002
+        '403':
+          description: Request rejected; no credential proof or dependency details
+            returned
+          content: *id002
+        '405':
+          description: Request rejected; no credential proof or dependency details
+            returned
+          content: *id002
+        '429':
+          description: Request rejected; no credential proof or dependency details
+            returned
+          content: *id002
+        '503':
+          description: Request rejected; no credential proof or dependency details
+            returned
+          content: *id002
+      parameters:
+      - *id003
+      - *id004
+  /api/v1/auth/tokens/revoke:
+    post:
+      operationId: revokeToken
+      summary: revokeToken
+      security:
+      - SessionCookie: []
+      responses:
+        '204':
+          description: revokeToken
+        '400':
+          description: Request rejected; no credential proof or dependency details
+            returned
+          content: *id002
+        '401':
+          description: Request rejected; no credential proof or dependency details
+            returned
+          content: *id002
+        '403':
+          description: Request rejected; no credential proof or dependency details
+            returned
+          content: *id002
+        '405':
+          description: Request rejected; no credential proof or dependency details
+            returned
+          content: *id002
+        '429':
+          description: Request rejected; no credential proof or dependency details
+            returned
+          content: *id002
+        '503':
+          description: Request rejected; no credential proof or dependency details
+            returned
+          content: *id002
+      parameters:
+      - *id003
+      - *id004
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              additionalProperties: false
+              properties:
+                id: *id001
+              required:
+              - id
+  /api/v1/auth/tokens:
+    get:
+      operationId: listTokens
+      summary: List own token metadata, maximum 100 rows
+      security:
+      - SessionCookie: []
+      responses:
+        '200':
+          description: List own token metadata, maximum 100 rows
+          content:
+            application/json:
+              schema:
+                type: array
+                maxItems: 100
+                items:
+                  $ref: '#/components/schemas/TokenMetadata'
+        '400':
+          description: Request rejected; no credential proof or dependency details
+            returned
+          content: *id002
+        '401':
+          description: Request rejected; no credential proof or dependency details
+            returned
+          content: *id002
+        '403':
+          description: Request rejected; no credential proof or dependency details
+            returned
+          content: *id002
+        '405':
+          description: Request rejected; no credential proof or dependency details
+            returned
+          content: *id002
+        '429':
+          description: Request rejected; no credential proof or dependency details
+            returned
+          content: *id002
+        '503':
+          description: Request rejected; no credential proof or dependency details
+            returned
+          content: *id002
+      parameters:
+      - *id003
+    post:
+      operationId: createToken
+      summary: Create own token; maximum 16 active tokens
+      security:
+      - SessionCookie: []
+      responses:
+        '201':
+          description: Create own token; maximum 16 active tokens
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: false
+                properties:
+                  metadata:
+                    $ref: '#/components/schemas/TokenMetadata'
+                  token: *id001
+                required:
+                - metadata
+                - token
+        '400':
+          description: Request rejected; no credential proof or dependency details
+            returned
+          content: *id002
+        '401':
+          description: Request rejected; no credential proof or dependency details
+            returned
+          content: *id002
+        '403':
+          description: Request rejected; no credential proof or dependency details
+            returned
+          content: *id002
+        '405':
+          description: Request rejected; no credential proof or dependency details
+            returned
+          content: *id002
+        '429':
+          description: Request rejected; no credential proof or dependency details
+            returned
+          content: *id002
+        '503':
+          description: Request rejected; no credential proof or dependency details
+            returned
+          content: *id002
+      parameters:
+      - *id003
+      - *id004
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              additionalProperties: false
+              properties:
+                name:
+                  type: string
+                  minLength: 1
+                  maxLength: 64
+                scopes:
+                  type: array
+                  minItems: 1
+                  maxItems: 8
+                  uniqueItems: true
+                  items:
+                    type: string
+                    enum:
+                    - settings:read
+                    - settings:write
+                bindings:
+                  type: array
+                  minItems: 1
+                  maxItems: 16
+                  uniqueItems: true
+                  items: *id001
+              required:
+              - name
+              - scopes
+              - bindings
+  /api/v1/auth/audit:
+    get:
+      operationId: listSecurityAudit
+      summary: Read own durable security audit after cursor
+      security:
+      - SessionCookie: []
+      responses:
+        '200':
+          description: Read own durable security audit after cursor
+          content:
+            application/json:
+              schema:
+                type: array
+                maxItems: 100
+                items:
+                  type: object
+                  additionalProperties: false
+                  properties:
+                    id:
+                      type: integer
+                      format: int64
+                    occurred_at:
+                      type: integer
+                      format: int64
+                    action: *id001
+                    result: *id001
+                    principal: *id001
+                    resource: *id001
+                    reason: *id001
+                  required:
+                  - id
+                  - occurred_at
+                  - action
+                  - result
+                  - principal
+                  - resource
+                  - reason
+        '400':
+          description: Request rejected; no credential proof or dependency details
+            returned
+          content: *id002
+        '401':
+          description: Request rejected; no credential proof or dependency details
+            returned
+          content: *id002
+        '403':
+          description: Request rejected; no credential proof or dependency details
+            returned
+          content: *id002
+        '405':
+          description: Request rejected; no credential proof or dependency details
+            returned
+          content: *id002
+        '429':
+          description: Request rejected; no credential proof or dependency details
+            returned
+          content: *id002
+        '503':
+          description: Request rejected; no credential proof or dependency details
+            returned
+          content: *id002
+      parameters:
+      - *id003
+      - name: after
+        in: query
+        schema:
+          type: integer
+          format: int64
+          minimum: 0
+  /api/v1/users/me/settings/timezone:
+    put:
+      operationId: setOwnTimezone
+      summary: Set own timezone with live credential admission, deduplication and
+        atomic audit
+      security:
+      - SessionCookie: []
+      - BearerToken: []
+      responses:
+        '200':
+          description: Set own timezone with live credential admission, deduplication
+            and atomic audit
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: false
+                properties:
+                  status: *id001
+                  revision:
+                    type: integer
+                    format: int64
+                required:
+                - status
+                - revision
+        '400':
+          description: Request rejected; no credential proof or dependency details
+            returned
+          content: *id002
+        '401':
+          description: Request rejected; no credential proof or dependency details
+            returned
+          content: *id002
+        '403':
+          description: Request rejected; no credential proof or dependency details
+            returned
+          content: *id002
+        '405':
+          description: Request rejected; no credential proof or dependency details
+            returned
+          content: *id002
+        '429':
+          description: Request rejected; no credential proof or dependency details
+            returned
+          content: *id002
+        '503':
+          description: Request rejected; no credential proof or dependency details
+            returned
+          content: *id002
+        '409':
+          description: Command ID reused with different payload
+        '412':
+          description: Expected revision differs from current value
+      parameters:
+      - *id003
+      - *id004
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              additionalProperties: false
+              properties:
+                command_id:
+                  type: string
+                  minLength: 1
+                  maxLength: 128
+                value:
+                  type: string
+                  minLength: 1
+                  maxLength: 128
+                expected_revision:
+                  type: integer
+                  format: int64
+                  minimum: 0
+              required:
+              - command_id
+              - value
+              - expected_revision
+  /ws/events:
+    get:
+      operationId: authOnlyWebsocket
+      summary: Authenticate WebSocket transport; no business event stream
+      security:
+      - SessionCookie: []
+      - BearerToken: []
+      responses:
+        '101':
+          description: Authenticate WebSocket transport; no business event stream
+        '400':
+          description: Request rejected; no credential proof or dependency details
+            returned
+          content: *id002
+        '401':
+          description: Request rejected; no credential proof or dependency details
+            returned
+          content: *id002
+        '403':
+          description: Request rejected; no credential proof or dependency details
+            returned
+          content: *id002
+        '405':
+          description: Request rejected; no credential proof or dependency details
+            returned
+          content: *id002
+        '429':
+          description: Request rejected; no credential proof or dependency details
+            returned
+          content: *id002
+        '503':
+          description: Request rejected; no credential proof or dependency details
+            returned
+          content: *id002
+      parameters:
+      - *id003
+      description: 'Use wss://, exact Origin, cookie or Bearer header. Query credentials
+        prohibited. Initial message {transport: auth_only, events: false}; cap 16
+        connections, two per credential; revocation closes immediately and expiry
+        is rechecked every 15s. No snapshot/replay protocol yet.'
+components:
+  responses:
+    Internal:
+      description: Internal error; no traceback or dependency details
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  schemas:
+    Error:
+      type: object
+      required:
+      - code
+      additionalProperties: false
+      properties:
+        code:
+          type: string
+          enum:
+          - NOT_FOUND
+          - METHOD_NOT_ALLOWED
+          - INTERNAL
+          - INVALID_REQUEST
+          - INVALID_CREDENTIALS
+          - RATE_LIMITED
+          - AUTH_UNAVAILABLE
+          - AUTH_SESSION_NOT_IMPLEMENTED
+          - UNAUTHENTICATED
+          - FORBIDDEN
+          - CONFLICT
+          - REVISION_CONFLICT
+          - IDEMPOTENCY_CONFLICT
+          - STORAGE_UNAVAILABLE
+          - CONNECTION_LIMIT
+          - TOKEN_LIMIT
+        request_id:
+          type: string
+          maxLength: 64
+    Liveness:
+      type: object
+      required:
+      - live
+      - profile
+      - simulated
+      additionalProperties: false
+      properties:
+        live:
+          type: boolean
+        profile:
+          type: string
+          enum:
+          - development
+          - test
+        simulated:
+          type: boolean
+          enum:
+          - true
+    Dependency:
+      type: object
+      required:
+      - name
+      - kind
+      - status
+      - critical
+      additionalProperties: false
+      properties:
+        name:
+          type: string
+          enum:
+          - storage
+          - adapters
+          - ml
+          - mqtt
+          - auth
+        kind:
+          type: string
+          enum:
+          - memory_fake
+          - not_implemented
+          - synthetic
+          - external
+          - sqlite
+          - credentials_only
+          - sessions
+        status:
+          type: string
+          enum:
+          - READY
+          - DISABLED
+          - UNAVAILABLE
+          - STALE
+          - NOT_IMPLEMENTED
+        critical:
+          type: boolean
+        reason:
+          type: string
+    Readiness:
+      type: object
+      required:
+      - live
+      - ready
+      - degraded
+      - profile
+      - simulated
+      - persistent
+      - dependencies
+      - phase
+      additionalProperties: false
+      properties:
+        live:
+          type: boolean
+        ready:
+          type: boolean
+        degraded:
+          type: boolean
+        profile:
+          type: string
+          enum:
+          - development
+          - test
+        simulated:
+          type: boolean
+          enum:
+          - true
+        persistent:
+          type: boolean
+        dependencies:
+          type: array
+          minItems: 4
+          maxItems: 5
+          items:
+            $ref: '#/components/schemas/Dependency'
+        phase:
+          type: string
+          enum:
+          - STARTING
+          - RUNNING
+          - STOPPING
+          - SAFE_MODE
+    Version:
+      type: object
+      additionalProperties: false
+      required:
+      - api_version
+      - version
+      - commit
+      - profile
+      - adapter_mode
+      - storage_kind
+      - simulated
+      - persistent
+      - auth
+      properties:
+        api_version:
+          type: string
+          enum:
+          - v1
+        version:
+          type: string
+        commit:
+          type: string
+        profile:
+          type: string
+          enum:
+          - development
+          - test
+        adapter_mode:
+          type: string
+          enum:
+          - simulation
+        storage_kind:
+          type: string
+          enum:
+          - memory_fake
+          - not_implemented
+          - sqlite
+        simulated:
+          type: boolean
+          enum:
+          - true
+        persistent:
+          type: boolean
+        auth:
+          type: string
+          enum:
+          - NOT_IMPLEMENTED
+          - CREDENTIALS_ONLY
+          - SESSIONS_AND_TOKENS
+    TokenMetadata:
+      type: object
+      additionalProperties: false
+      properties:
+        id: *id001
+        name: *id001
+        scopes:
+          type: array
+          items: *id001
+          maxItems: 8
+        bindings:
+          type: array
+          items: *id001
+          maxItems: 16
+        created_at:
+          type: integer
+          format: int64
+        expires_at:
+          type: integer
+          format: int64
+        revoked_at:
+          type: integer
+          format: int64
+      required:
+      - id
+      - name
+      - scopes
+      - bindings
+      - created_at
+      - expires_at
+  securitySchemes:
+    SessionCookie:
+      type: apiKey
+      in: cookie
+      name: __Host-shh_session
+      description: Secure; HttpOnly; SameSite=Lax; Path=/; no Domain. Idle 30 minutes;
+        absolute 12 hours.
+    BearerToken:
+      type: http
+      scheme: bearer
+      description: One-time secret; 90-day expiry; live owner roles/scopes/bindings.
+        Do not combine with cookie.

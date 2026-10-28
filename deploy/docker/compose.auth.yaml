@@ -1,0 +1,11 @@
+# Add after compose.dev.yaml + compose.sqlite.yaml. Test/development TLS only.
+services:
+  hub:
+    command: [--config, /app/config.auth.yaml]
+    environment:
+      HUB_TLS_CERT: /data/hub/tls/server.pem
+      HUB_TLS_KEY: /data/hub/tls/server.key
+      HUB_PUBLIC_ORIGIN: ${HUB_PUBLIC_ORIGIN:-https://localhost:8443}
+    healthcheck:
+      test: [CMD, /app/hub, --healthcheck, 'https://127.0.0.1:8080/ready', --healthcheck-ca, /data/hub/tls/ca.pem]
+      start_period: 10s

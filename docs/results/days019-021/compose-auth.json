@@ -1,0 +1,28 @@
+{
+  "login_https": true,
+  "csrf_origin_enforced": true,
+  "cookie_flags": true,
+  "one_time_token_reveal": true,
+  "ambiguous_auth_rejected": true,
+  "session_after_restart": true,
+  "token_after_restart": true,
+  "setting_revision": 2,
+  "revoke_before_cached_retry": true,
+  "audit_rows": 5,
+  "audit_redacted": true,
+  "logout": true,
+  "auth_required_ready": 200,
+  "memory_limit_bytes": 134217728,
+  "memory_swap_equal_limit": true,
+  "peak_memory_bytes": [
+    48230400,
+    27439104
+  ],
+  "readonly_rootfs": true,
+  "uid": 10001,
+  "ca_verified": true,
+  "oom_killed": false,
+  "simulated": true,
+  "hardware_validated": false,
+  "test_volume_removed": true
+}

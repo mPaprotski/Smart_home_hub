@@ -1,0 +1,49 @@
+{
+  "ready": {
+    "phase": "RUNNING",
+    "live": true,
+    "ready": true,
+    "degraded": false,
+    "profile": "development",
+    "simulated": true,
+    "persistent": false,
+    "dependencies": [
+      {
+        "name": "storage",
+        "kind": "memory_fake",
+        "status": "READY",
+        "critical": true,
+        "reason": "simulation only; data is not persisted"
+      },
+      {
+        "name": "adapters",
+        "kind": "synthetic",
+        "status": "READY",
+        "critical": true
+      },
+      {
+        "name": "ml",
+        "kind": "external",
+        "status": "DISABLED",
+        "critical": false
+      },
+      {
+        "name": "mqtt",
+        "kind": "external",
+        "status": "DISABLED",
+        "critical": false
+      }
+    ]
+  },
+  "published_before_restart": 310,
+  "restart_passed": true,
+  "nonroot": true,
+  "read_only": true,
+  "loopback_publish": true,
+  "shutdown_exit": 0,
+  "observed_each_process": [
+    330,
+    35
+  ],
+  "cleanup_passed": true
+}

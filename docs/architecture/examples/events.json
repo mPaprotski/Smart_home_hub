@@ -1,0 +1,114 @@
+{
+  "document_kind": "synthetic_contract_examples_not_runtime_history",
+  "examples": [
+    {
+      "event_id": "example-event-001",
+      "schema_version": 1,
+      "type": "LIGHT_MODE_CHANGED",
+      "producer": "core.lighting",
+      "occurred_at": "2026-10-25T09:00:00Z",
+      "received_at": "2026-10-25T09:00:00Z",
+      "boot_epoch": "example-boot-a",
+      "sequence": 1,
+      "correlation_id": "example-flow-001",
+      "causation_id": "example-command-001",
+      "resource": {
+        "kind": "zone",
+        "id": "monitor.backlight"
+      },
+      "revision": 1,
+      "payload": {
+        "old_mode": "STATIC",
+        "new_mode": "OFF"
+      }
+    },
+    {
+      "event_id": "example-event-002",
+      "schema_version": 1,
+      "type": "PRESENCE_STATE_CHANGED",
+      "producer": "core.presence",
+      "occurred_at": "2026-10-25T09:00:00Z",
+      "received_at": "2026-10-25T09:00:00Z",
+      "boot_epoch": "example-boot-a",
+      "sequence": 1,
+      "correlation_id": "example-flow-001",
+      "causation_id": null,
+      "resource": {
+        "kind": "presence",
+        "id": "room"
+      },
+      "revision": 2,
+      "payload": {
+        "old_state": "AWAY",
+        "new_state": "UNKNOWN",
+        "reason": "SOURCE_STALE"
+      }
+    },
+    {
+      "event_id": "example-event-003",
+      "schema_version": 1,
+      "type": "GESTURE_RECOGNIZED",
+      "producer": "ml-runtime.gesture",
+      "occurred_at": "2026-10-25T09:00:00Z",
+      "received_at": "2026-10-25T09:00:00Z",
+      "boot_epoch": "example-boot-a",
+      "sequence": 1,
+      "correlation_id": "example-flow-001",
+      "causation_id": null,
+      "resource": {
+        "kind": "camera",
+        "id": "main"
+      },
+      "revision": null,
+      "payload": {
+        "gesture": "OPEN_PALM",
+        "confidence": 0.95,
+        "consumer_epoch": "example-camera-epoch-1"
+      }
+    },
+    {
+      "event_id": "example-event-004",
+      "schema_version": 1,
+      "type": "COMMAND_COMPLETED",
+      "producer": "core.dispatcher",
+      "occurred_at": "2026-10-25T09:00:00Z",
+      "received_at": "2026-10-25T09:00:00Z",
+      "boot_epoch": "example-boot-a",
+      "sequence": 2,
+      "correlation_id": "example-flow-001",
+      "causation_id": null,
+      "resource": {
+        "kind": "audio",
+        "id": "main"
+      },
+      "revision": null,
+      "payload": {
+        "command_id": "example-command-005",
+        "status": "UNKNOWN_OUTCOME",
+        "error_code": "EFFECT_RESULT_UNKNOWN"
+      }
+    },
+    {
+      "event_id": "example-event-005",
+      "schema_version": 1,
+      "type": "CAMERA_STATE_CHANGED",
+      "producer": "ml-runtime.camera",
+      "occurred_at": "2026-10-25T09:00:00Z",
+      "received_at": "2026-10-25T09:00:00Z",
+      "boot_epoch": "example-boot-a",
+      "sequence": 2,
+      "correlation_id": "example-flow-001",
+      "causation_id": null,
+      "resource": {
+        "kind": "camera",
+        "id": "main"
+      },
+      "revision": null,
+      "payload": {
+        "state": "OFF",
+        "consumers": [],
+        "indicator_commanded_on": false
+      }
+    }
+  ]
+}

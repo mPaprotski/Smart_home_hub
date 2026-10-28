@@ -1,0 +1,54 @@
+{
+  "flood_health_status": 200,
+  "flood_statuses": [
+    401,
+    429
+  ],
+  "peak_memory_bytes": 69844992,
+  "persistent_admin_after_recreate": true,
+  "ready": {
+    "phase": "RUNNING",
+    "live": true,
+    "ready": true,
+    "degraded": false,
+    "profile": "development",
+    "simulated": true,
+    "persistent": true,
+    "dependencies": [
+      {
+        "name": "storage",
+        "kind": "sqlite",
+        "status": "READY",
+        "critical": true,
+        "reason": "file-backed SQLite; synthetic adapters remain simulated"
+      },
+      {
+        "name": "adapters",
+        "kind": "synthetic",
+        "status": "READY",
+        "critical": true
+      },
+      {
+        "name": "ml",
+        "kind": "external",
+        "status": "DISABLED",
+        "critical": false
+      },
+      {
+        "name": "mqtt",
+        "kind": "external",
+        "status": "DISABLED",
+        "critical": false
+      }
+    ]
+  },
+  "bootstrap_once": true,
+  "nonroot": true,
+  "rootfs_read_only": true,
+  "memory_limit_mib": 128,
+  "loopback_publish": true,
+  "unwritable_storage_closed": true,
+  "read_only_data_volume_closed": true,
+  "read_only_data_mount_inspected": true,
+  "test_volume_and_containers_cleaned": true
+}

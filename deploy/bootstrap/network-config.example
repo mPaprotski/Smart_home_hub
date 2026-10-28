@@ -1,0 +1,6 @@
+# TEMPLATE ONLY: replace ACTUAL_ETHERNET_INTERFACE after checking the image/board.
+version: 2
+ethernets:
+  ACTUAL_ETHERNET_INTERFACE:
+    dhcp4: true
+    optional: true

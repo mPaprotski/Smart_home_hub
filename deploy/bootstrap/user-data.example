@@ -1,0 +1,18 @@
+#cloud-config
+# TEMPLATE ONLY: fill private copy, never commit real password hashes/SSH keys.
+# Check cloud-init compatibility of the exact downloaded Ubuntu Pi server image.
+hostname: smarthome
+manage_etc_hosts: true
+timezone: Europe/Minsk
+ssh_pwauth: false
+users:
+  - name: hub-admin
+    groups: [adm, sudo]
+    shell: /bin/bash
+    lock_passwd: false
+    hashed_passwd: REPLACE_WITH_PASSWORD_HASH_GENERATED_LOCALLY
+    sudo: 'ALL=(ALL) ALL'
+    ssh_authorized_keys:
+      - REPLACE_WITH_YOUR_PUBLIC_SSH_KEY
+package_update: false
+# Do not auto-reboot or rewrite disks in a reusable bootstrap template.

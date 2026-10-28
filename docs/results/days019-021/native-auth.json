@@ -1,0 +1,22 @@
+{
+  "login_https": true,
+  "csrf_origin_enforced": true,
+  "cookie_flags": true,
+  "one_time_token_reveal": true,
+  "ambiguous_auth_rejected": true,
+  "session_after_restart": true,
+  "token_after_restart": true,
+  "setting_revision": 2,
+  "revoke_before_cached_retry": true,
+  "audit_rows": 5,
+  "audit_redacted": true,
+  "logout": true,
+  "auth_required_ready": 200,
+  "process_exit": 0,
+  "observed_each_process": [
+    13,
+    8
+  ],
+  "ca_verified": true,
+  "tls_keys_removed": true
+}

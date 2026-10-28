@@ -1,0 +1,68 @@
+{
+  "status": "M0_NOT_READY",
+  "gates": [
+    {
+      "id": "G01",
+      "title": "Platform",
+      "status": "BLOCKED",
+      "reason": "No Pi install/headless/reboot evidence"
+    },
+    {
+      "id": "G02",
+      "title": "Cooling/access",
+      "status": "PARTIAL",
+      "reason": "Thermal policy PASS-SIM; physical cooling/bus tests BLOCKED"
+    },
+    {
+      "id": "G03",
+      "title": "LED independence",
+      "status": "BLOCKED",
+      "reason": "Go mapping PASS-SIM; no physical WS2812B"
+    },
+    {
+      "id": "G04",
+      "title": "Audio/PCM on Pi",
+      "status": "BLOCKED",
+      "reason": "Isolated host PCM passes; no physical analog/Bluetooth/USB target"
+    },
+    {
+      "id": "G05",
+      "title": "Target permissions",
+      "status": "PARTIAL",
+      "reason": "Host isolation tested; target driver/container rights unknown"
+    },
+    {
+      "id": "G06",
+      "title": "LAN/mobile trust",
+      "status": "BLOCKED",
+      "reason": "Loopback TLS passes; no real mDNS/phone/Pi LAN"
+    },
+    {
+      "id": "G07",
+      "title": "Capture/platform path",
+      "status": "PARTIAL",
+      "reason": "Synthetic analyzer/local worker pass; live display and other OS unavailable"
+    },
+    {
+      "id": "G08",
+      "title": "Repeatability",
+      "status": "PARTIAL",
+      "reason": "Two host suites same outcomes; physical clean-install/replay not run"
+    }
+  ],
+  "can_proceed_independently": [
+    "monorepo scaffold",
+    "config validation",
+    "event/command interfaces",
+    "storage/auth unit work",
+    "simulation"
+  ],
+  "cannot_claim_complete": [
+    "Pi installation",
+    "physical cooling/GPIO/I2C/SPI",
+    "WS2812B/audio coexistence",
+    "LAN/mobile mDNS/TLS",
+    "four-platform capture",
+    "production deployment"
+  ]
+}

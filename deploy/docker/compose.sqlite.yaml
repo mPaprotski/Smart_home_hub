@@ -1,0 +1,26 @@
+# Combine with compose.dev.yaml. This is persistent development, not production.
+services:
+  init-data:
+    image: debian:bookworm-slim@sha256:7ff6ba31527b9e336162fa061746c366c4b2032f4d2cff2078bea43f78efe3f8
+    user: '0:0'
+    command: ['sh', '-ec', 'mkdir -p /data/hub; chmod 0700 /data/hub; chown 10001:10001 /data/hub']
+    volumes: [hub-data:/data]
+    read_only: true
+    cap_drop: [ALL]
+    cap_add: [CHOWN, FOWNER]
+    security_opt: [no-new-privileges:true]
+    mem_limit: 32m
+    memswap_limit: 32m
+    pids_limit: 16
+    restart: 'no'
+  hub:
+    command: [--config, /app/config.sqlite.yaml]
+    environment:
+      HUB_STORAGE: sqlite
+      HUB_DB_PATH: /data/hub/hub.db
+    volumes: [hub-data:/data]
+    depends_on:
+      init-data:
+        condition: service_completed_successfully
+volumes:
+  hub-data:

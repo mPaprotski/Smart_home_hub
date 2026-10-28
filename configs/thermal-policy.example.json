@@ -1,0 +1,11 @@
+{
+  "schema_version": 1,
+  "status": "project_defaults_not_hardware_calibrated",
+  "warm_c": 50.0,
+  "hot_c": 65.0,
+  "critical_c": 75.0,
+  "hysteresis_c": 3.0,
+  "fan_strategy": "on_off",
+  "invalid_sensor_fan": "ON",
+  "note": "75C critical is a proposed project state, not a claim that TZ defines every state boundary"
+}

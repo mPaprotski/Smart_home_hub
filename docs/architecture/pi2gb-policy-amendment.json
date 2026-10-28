@@ -1,0 +1,9 @@
+{
+  "date_local": "2026-10-26",
+  "reason": "Owner clarification: control-plane Pi, laptop ML placement, preservation priorities and lazy runtime policy",
+  "previous_spec_sha256": "0a3cd42efe59990cc25157910370871d9c37ae2b33c9d0b6bfd405668803ee6c",
+  "new_spec_sha256": "73d0c2179e4299d2afee58b10d67f231160096cdce9cbe4aa7ad1ffb3cbcfea2",
+  "spec_version": "1.1",
+  "automatic_controller_implemented": false,
+  "historical_execution_evidence_unchanged": true
+}

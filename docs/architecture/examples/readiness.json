@@ -1,0 +1,179 @@
+{
+  "document_kind": "synthetic_snapshots_no_live_checks",
+  "examples": [
+    {
+      "case": "normal",
+      "document_kind": "synthetic_authorized_diagnostics",
+      "lifecycle": "RUNNING",
+      "health_http_status": 200,
+      "ready_http_status": 200,
+      "ready": true,
+      "degraded": false,
+      "dependencies": [
+        {
+          "id": "core",
+          "enabled": true,
+          "critical": true,
+          "status": "READY"
+        },
+        {
+          "id": "sqlite",
+          "enabled": true,
+          "critical": true,
+          "status": "READY"
+        },
+        {
+          "id": "lighting_adapter",
+          "enabled": true,
+          "critical": true,
+          "status": "READY"
+        },
+        {
+          "id": "audio_adapter",
+          "enabled": true,
+          "critical": true,
+          "status": "READY"
+        },
+        {
+          "id": "ml_runtime",
+          "enabled": true,
+          "critical": false,
+          "status": "READY"
+        },
+        {
+          "id": "mqtt",
+          "enabled": true,
+          "critical": false,
+          "status": "READY"
+        }
+      ],
+      "release_verification": {
+        "required_local_services": [
+          "core",
+          "frontend",
+          "ml_runtime",
+          "mqtt",
+          "telegram_bot"
+        ],
+        "smoke_required": true,
+        "success_cannot_be_inferred_from_this_snapshot": true
+      }
+    },
+    {
+      "case": "ml_degraded",
+      "document_kind": "synthetic_authorized_diagnostics",
+      "lifecycle": "RUNNING",
+      "health_http_status": 200,
+      "ready_http_status": 200,
+      "ready": true,
+      "degraded": true,
+      "dependencies": [
+        {
+          "id": "core",
+          "enabled": true,
+          "critical": true,
+          "status": "READY"
+        },
+        {
+          "id": "sqlite",
+          "enabled": true,
+          "critical": true,
+          "status": "READY"
+        },
+        {
+          "id": "lighting_adapter",
+          "enabled": true,
+          "critical": true,
+          "status": "READY"
+        },
+        {
+          "id": "audio_adapter",
+          "enabled": true,
+          "critical": true,
+          "status": "READY"
+        },
+        {
+          "id": "ml_runtime",
+          "enabled": true,
+          "critical": false,
+          "status": "UNAVAILABLE"
+        },
+        {
+          "id": "mqtt",
+          "enabled": true,
+          "critical": false,
+          "status": "READY"
+        }
+      ],
+      "release_verification": {
+        "required_local_services": [
+          "core",
+          "frontend",
+          "ml_runtime",
+          "mqtt",
+          "telegram_bot"
+        ],
+        "smoke_required": true,
+        "success_cannot_be_inferred_from_this_snapshot": true
+      }
+    },
+    {
+      "case": "sqlite_safe_mode",
+      "document_kind": "synthetic_authorized_diagnostics",
+      "lifecycle": "SAFE_MODE",
+      "health_http_status": 200,
+      "ready_http_status": 503,
+      "ready": false,
+      "degraded": true,
+      "dependencies": [
+        {
+          "id": "core",
+          "enabled": true,
+          "critical": true,
+          "status": "READY"
+        },
+        {
+          "id": "sqlite",
+          "enabled": true,
+          "critical": true,
+          "status": "UNAVAILABLE"
+        },
+        {
+          "id": "lighting_adapter",
+          "enabled": true,
+          "critical": true,
+          "status": "READY"
+        },
+        {
+          "id": "audio_adapter",
+          "enabled": true,
+          "critical": true,
+          "status": "READY"
+        },
+        {
+          "id": "ml_runtime",
+          "enabled": true,
+          "critical": false,
+          "status": "READY"
+        },
+        {
+          "id": "mqtt",
+          "enabled": true,
+          "critical": false,
+          "status": "READY"
+        }
+      ],
+      "release_verification": {
+        "required_local_services": [
+          "core",
+          "frontend",
+          "ml_runtime",
+          "mqtt",
+          "telegram_bot"
+        ],
+        "smoke_required": true,
+        "success_cannot_be_inferred_from_this_snapshot": true
+      }
+    }
+  ]
+}

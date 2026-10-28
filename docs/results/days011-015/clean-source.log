@@ -1,0 +1,472 @@
+CLEAN COMMAND: python3 -m venv .venv
+CLEAN COMMAND: .venv/bin/python -m pip install --disable-pip-version-check --cache-dir <repo>/.cache/pip -r ml/requirements-dev.lock
+Collecting annotated-types==0.8.0 (from -r ml/requirements-dev.lock (line 1))
+  Downloading annotated_types-0.8.0-py3-none-any.whl.metadata (15 kB)
+Collecting ast_serialize==0.13.1 (from -r ml/requirements-dev.lock (line 2))
+  Downloading ast_serialize-0.13.1-cp39-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (1.4 kB)
+Collecting attrs==26.1.0 (from -r ml/requirements-dev.lock (line 3))
+  Downloading attrs-26.1.0-py3-none-any.whl.metadata (8.8 kB)
+Collecting build==1.6.1 (from -r ml/requirements-dev.lock (line 4))
+  Downloading build-1.6.1-py3-none-any.whl.metadata (5.6 kB)
+Collecting iniconfig==2.3.1 (from -r ml/requirements-dev.lock (line 5))
+  Downloading iniconfig-2.3.1-py3-none-any.whl.metadata (2.8 kB)
+Collecting jsonschema==4.26.0 (from -r ml/requirements-dev.lock (line 6))
+  Downloading jsonschema-4.26.0-py3-none-any.whl.metadata (7.6 kB)
+Collecting jsonschema-path==0.5.0 (from -r ml/requirements-dev.lock (line 7))
+  Downloading jsonschema_path-0.5.0-py3-none-any.whl.metadata (8.1 kB)
+Collecting jsonschema-specifications==2025.9.1 (from -r ml/requirements-dev.lock (line 8))
+  Downloading jsonschema_specifications-2025.9.1-py3-none-any.whl.metadata (2.9 kB)
+Collecting lazy-object-proxy==1.13.0 (from -r ml/requirements-dev.lock (line 9))
+  Downloading lazy_object_proxy-1.13.0-cp312-cp312-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl.metadata (5.1 kB)
+Collecting librt==0.16.0 (from -r ml/requirements-dev.lock (line 10))
+  Downloading librt-0.16.0-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (1.3 kB)
+Collecting mypy==2.4.0 (from -r ml/requirements-dev.lock (line 11))
+  Downloading mypy-2.4.0-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (2.4 kB)
+Collecting mypy_extensions==1.1.0 (from -r ml/requirements-dev.lock (line 12))
+  Downloading mypy_extensions-1.1.0-py3-none-any.whl.metadata (1.1 kB)
+Collecting openapi-schema-validator==0.9.0 (from -r ml/requirements-dev.lock (line 13))
+  Downloading openapi_schema_validator-0.9.0-py3-none-any.whl.metadata (10 kB)
+Collecting openapi-spec-validator==0.9.0 (from -r ml/requirements-dev.lock (line 14))
+  Downloading openapi_spec_validator-0.9.0-py3-none-any.whl.metadata (6.5 kB)
+Collecting packaging==26.3 (from -r ml/requirements-dev.lock (line 15))
+  Downloading packaging-26.3-py3-none-any.whl.metadata (3.5 kB)
+Collecting pathable==0.6.0 (from -r ml/requirements-dev.lock (line 16))
+  Downloading pathable-0.6.0-py3-none-any.whl.metadata (7.2 kB)
+Collecting pathspec==1.1.1 (from -r ml/requirements-dev.lock (line 17))
+  Downloading pathspec-1.1.1-py3-none-any.whl.metadata (14 kB)
+Collecting pluggy==1.7.0 (from -r ml/requirements-dev.lock (line 18))
+  Downloading pluggy-1.7.0-py3-none-any.whl.metadata (5.0 kB)
+Collecting pydantic==2.14.1 (from -r ml/requirements-dev.lock (line 19))
+  Downloading pydantic-2.14.1-py3-none-any.whl.metadata (133 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 133.0/133.0 kB 1.1 MB/s eta 0:00:00
+Collecting pydantic-settings==2.16.1 (from -r ml/requirements-dev.lock (line 20))
+  Downloading pydantic_settings-2.16.1-py3-none-any.whl.metadata (4.0 kB)
+Collecting pydantic_core==2.50.1 (from -r ml/requirements-dev.lock (line 21))
+  Downloading pydantic_core-2.50.1-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (6.5 kB)
+Collecting Pygments==2.21.0 (from -r ml/requirements-dev.lock (line 22))
+  Downloading pygments-2.21.0-py3-none-any.whl.metadata (2.5 kB)
+Collecting pyproject_hooks==1.3.3 (from -r ml/requirements-dev.lock (line 23))
+  Downloading pyproject_hooks-1.3.3-py3-none-any.whl.metadata (1.3 kB)
+Collecting pytest==9.1.1 (from -r ml/requirements-dev.lock (line 24))
+  Downloading pytest-9.1.1-py3-none-any.whl.metadata (7.6 kB)
+Collecting python-dotenv==1.2.4 (from -r ml/requirements-dev.lock (line 25))
+  Downloading python_dotenv-1.2.4-py3-none-any.whl.metadata (29 kB)
+Collecting PyYAML==6.0.3 (from -r ml/requirements-dev.lock (line 26))
+  Downloading pyyaml-6.0.3-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (2.4 kB)
+Collecting referencing==0.37.0 (from -r ml/requirements-dev.lock (line 27))
+  Downloading referencing-0.37.0-py3-none-any.whl.metadata (2.8 kB)
+Collecting rfc3339-validator==0.1.4 (from -r ml/requirements-dev.lock (line 28))
+  Downloading rfc3339_validator-0.1.4-py2.py3-none-any.whl.metadata (1.5 kB)
+Collecting rpds-py==2026.9.1 (from -r ml/requirements-dev.lock (line 29))
+  Downloading rpds_py-2026.9.1-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (4.1 kB)
+Collecting ruff==0.17.2 (from -r ml/requirements-dev.lock (line 30))
+  Downloading ruff-0.17.2-py3-none-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (20 kB)
+Collecting setuptools==80.9.0 (from -r ml/requirements-dev.lock (line 31))
+  Downloading setuptools-80.9.0-py3-none-any.whl.metadata (6.6 kB)
+Collecting six==1.17.0 (from -r ml/requirements-dev.lock (line 32))
+  Downloading six-1.17.0-py2.py3-none-any.whl.metadata (1.7 kB)
+Collecting typing-inspection==0.4.4 (from -r ml/requirements-dev.lock (line 33))
+  Downloading typing_inspection-0.4.4-py3-none-any.whl.metadata (2.6 kB)
+Collecting typing_extensions==4.16.0 (from -r ml/requirements-dev.lock (line 34))
+  Downloading typing_extensions-4.16.0-py3-none-any.whl.metadata (3.3 kB)
+Collecting wheel==0.48.0 (from -r ml/requirements-dev.lock (line 35))
+  Downloading wheel-0.48.0-py3-none-any.whl.metadata (2.3 kB)
+Downloading annotated_types-0.8.0-py3-none-any.whl (13 kB)
+Downloading ast_serialize-0.13.1-cp39-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (1.3 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.3/1.3 MB 1.9 MB/s eta 0:00:00
+Downloading attrs-26.1.0-py3-none-any.whl (67 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 67.5/67.5 kB 459.3 kB/s eta 0:00:00
+Downloading build-1.6.1-py3-none-any.whl (31 kB)
+Downloading iniconfig-2.3.1-py3-none-any.whl (7.6 kB)
+Downloading jsonschema-4.26.0-py3-none-any.whl (90 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 90.6/90.6 kB 1.2 MB/s eta 0:00:00
+Downloading jsonschema_path-0.5.0-py3-none-any.whl (24 kB)
+Downloading jsonschema_specifications-2025.9.1-py3-none-any.whl (18 kB)
+Downloading lazy_object_proxy-1.13.0-cp312-cp312-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl (71 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 71.4/71.4 kB 1.4 MB/s eta 0:00:00
+Downloading librt-0.16.0-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (531 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 532.0/532.0 kB 1.6 MB/s eta 0:00:00
+Downloading mypy-2.4.0-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (15.6 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 15.6/15.6 MB 1.7 MB/s eta 0:00:00
+Downloading mypy_extensions-1.1.0-py3-none-any.whl (5.0 kB)
+Downloading openapi_schema_validator-0.9.0-py3-none-any.whl (19 kB)
+Downloading openapi_spec_validator-0.9.0-py3-none-any.whl (50 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 50.3/50.3 kB 1.1 MB/s eta 0:00:00
+Downloading packaging-26.3-py3-none-any.whl (129 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 130.0/130.0 kB 2.0 MB/s eta 0:00:00
+Downloading pathable-0.6.0-py3-none-any.whl (18 kB)
+Downloading pathspec-1.1.1-py3-none-any.whl (57 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 57.3/57.3 kB 1.2 MB/s eta 0:00:00
+Downloading pluggy-1.7.0-py3-none-any.whl (27 kB)
+Downloading pydantic-2.14.1-py3-none-any.whl (488 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 488.1/488.1 kB 1.8 MB/s eta 0:00:00
+Downloading pydantic_settings-2.16.1-py3-none-any.whl (80 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 80.8/80.8 kB 1.3 MB/s eta 0:00:00
+Downloading pydantic_core-2.50.1-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (2.2 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.2/2.2 MB 2.2 MB/s eta 0:00:00
+Downloading pygments-2.21.0-py3-none-any.whl (1.3 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.3/1.3 MB 2.0 MB/s eta 0:00:00
+Downloading pyproject_hooks-1.3.3-py3-none-any.whl (10 kB)
+Downloading pytest-9.1.1-py3-none-any.whl (386 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 386.5/386.5 kB 1.5 MB/s eta 0:00:00
+Downloading python_dotenv-1.2.4-py3-none-any.whl (23 kB)
+Downloading pyyaml-6.0.3-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (807 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 807.9/807.9 kB 1.5 MB/s eta 0:00:00
+Downloading referencing-0.37.0-py3-none-any.whl (26 kB)
+Downloading rfc3339_validator-0.1.4-py2.py3-none-any.whl (3.5 kB)
+Downloading rpds_py-2026.9.1-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (371 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 371.3/371.3 kB 1.8 MB/s eta 0:00:00
+Downloading ruff-0.17.2-py3-none-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (10.5 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 10.5/10.5 MB 1.6 MB/s eta 0:00:00
+Downloading setuptools-80.9.0-py3-none-any.whl (1.2 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.2/1.2 MB 1.9 MB/s eta 0:00:00
+Downloading six-1.17.0-py2.py3-none-any.whl (11 kB)
+Downloading typing_inspection-0.4.4-py3-none-any.whl (14 kB)
+Downloading typing_extensions-4.16.0-py3-none-any.whl (45 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 45.6/45.6 kB 1.0 MB/s eta 0:00:00
+Downloading wheel-0.48.0-py3-none-any.whl (33 kB)
+Installing collected packages: typing_extensions, six, setuptools, ruff, rpds-py, PyYAML, python-dotenv, pyproject_hooks, Pygments, pluggy, pathspec, pathable, packaging, mypy_extensions, librt, lazy-object-proxy, iniconfig, attrs, ast_serialize, annotated-types, wheel, typing-inspection, rfc3339-validator, referencing, pytest, pydantic_core, mypy, build, pydantic, jsonschema-specifications, jsonschema-path, pydantic-settings, jsonschema, openapi-schema-validator, openapi-spec-validator
+Successfully installed PyYAML-6.0.3 Pygments-2.21.0 annotated-types-0.8.0 ast_serialize-0.13.1 attrs-26.1.0 build-1.6.1 iniconfig-2.3.1 jsonschema-4.26.0 jsonschema-path-0.5.0 jsonschema-specifications-2025.9.1 lazy-object-proxy-1.13.0 librt-0.16.0 mypy-2.4.0 mypy_extensions-1.1.0 openapi-schema-validator-0.9.0 openapi-spec-validator-0.9.0 packaging-26.3 pathable-0.6.0 pathspec-1.1.1 pluggy-1.7.0 pydantic-2.14.1 pydantic-settings-2.16.1 pydantic_core-2.50.1 pyproject_hooks-1.3.3 pytest-9.1.1 python-dotenv-1.2.4 referencing-0.37.0 rfc3339-validator-0.1.4 rpds-py-2026.9.1 ruff-0.17.2 setuptools-80.9.0 six-1.17.0 typing-inspection-0.4.4 typing_extensions-4.16.0 wheel-0.48.0
+CLEAN COMMAND: npm --prefix frontend ci --offline
+
+added 161 packages, and audited 162 packages in 3s
+
+44 packages are looking for funding
+  run `npm fund` for details
+
+found 0 vulnerabilities
+CLEAN COMMAND: /snap/go/current/bin/go mod download
+CLEAN COMMAND: make GO=/snap/go/current/bin/go check
+.venv/bin/ruff format --check ml
+5 files already formatted
+scripts/npm.sh run format:check
+
+> smart-home-hub-frontend@0.0.0 format:check
+> prettier --check .
+
+Checking formatting...
+All matched files use Prettier code style!
+/snap/go/current/bin/go vet ./cmd/... ./internal/... ./telegram/...
+go: downloading go.yaml.in/yaml/v3 v3.0.5
+.venv/bin/ruff check ml
+All checks passed!
+scripts/npm.sh run lint
+
+> smart-home-hub-frontend@0.0.0 lint
+> eslint .
+
+.venv/bin/mypy --config-file ml/pyproject.toml ml/smarthome_ml
+Success: no issues found in 3 source files
+scripts/npm.sh run typecheck
+
+> smart-home-hub-frontend@0.0.0 typecheck
+> tsc --noEmit
+
+/snap/go/current/bin/go test -race ./cmd/... ./internal/... ./telegram/...
+?   	github.com/mPaprotski/Smart_home_hub/cmd/hub	[no test files]
+?   	github.com/mPaprotski/Smart_home_hub/cmd/screen-client	[no test files]
+ok  	github.com/mPaprotski/Smart_home_hub/internal/api	1.050s
+ok  	github.com/mPaprotski/Smart_home_hub/internal/app	1.057s
+?   	github.com/mPaprotski/Smart_home_hub/internal/buildinfo	[no test files]
+ok  	github.com/mPaprotski/Smart_home_hub/internal/config	1.040s
+ok  	github.com/mPaprotski/Smart_home_hub/internal/devices	1.030s
+ok  	github.com/mPaprotski/Smart_home_hub/internal/events	1.124s
+?   	github.com/mPaprotski/Smart_home_hub/internal/logging	[no test files]
+ok  	github.com/mPaprotski/Smart_home_hub/internal/simulation	1.059s
+ok  	github.com/mPaprotski/Smart_home_hub/internal/storage	1.035s
+ok  	github.com/mPaprotski/Smart_home_hub/internal/system	1.033s
+?   	github.com/mPaprotski/Smart_home_hub/telegram/cmd/bot	[no test files]
+.venv/bin/python -m pytest ml/tests -q
+..............                                                           [100%]
+14 passed in 0.04s
+.venv/bin/python -m openapi_spec_validator docs/api/openapi.yaml
+docs/api/openapi.yaml: OK
+mkdir -p bin
+/snap/go/current/bin/go build -trimpath -o bin/hub ./cmd/hub
+/snap/go/current/bin/go build -trimpath -o bin/screen-client ./cmd/screen-client
+/snap/go/current/bin/go build -trimpath -o bin/bot ./telegram/cmd/bot
+scripts/npm.sh run build
+
+> smart-home-hub-frontend@0.0.0 build
+> tsc --noEmit && vite build
+
+vite v8.3.5 building client environment for production...
+transforming...
+✓ 16 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                   0.42 kB │ gzip:  0.30 kB
+dist/assets/index-BIAQemqo.css    0.44 kB │ gzip:  0.29 kB
+dist/assets/index-BRL7C0L2.js   220.65 kB │ gzip: 69.35 kB
+
+✓ built in 1.14s
+.venv/bin/python -m build --no-isolation --outdir bin/python ml
+* Getting build dependencies for sdist...
+running egg_info
+creating smarthome_ml.egg-info
+writing smarthome_ml.egg-info/PKG-INFO
+writing dependency_links to smarthome_ml.egg-info/dependency_links.txt
+writing entry points to smarthome_ml.egg-info/entry_points.txt
+writing top-level names to smarthome_ml.egg-info/top_level.txt
+writing manifest file 'smarthome_ml.egg-info/SOURCES.txt'
+reading manifest file 'smarthome_ml.egg-info/SOURCES.txt'
+writing manifest file 'smarthome_ml.egg-info/SOURCES.txt'
+* Building sdist...
+running sdist
+running egg_info
+writing smarthome_ml.egg-info/PKG-INFO
+writing dependency_links to smarthome_ml.egg-info/dependency_links.txt
+writing entry points to smarthome_ml.egg-info/entry_points.txt
+writing top-level names to smarthome_ml.egg-info/top_level.txt
+reading manifest file 'smarthome_ml.egg-info/SOURCES.txt'
+writing manifest file 'smarthome_ml.egg-info/SOURCES.txt'
+running check
+creating smarthome_ml-0.0.0
+creating smarthome_ml-0.0.0/smarthome_ml
+creating smarthome_ml-0.0.0/smarthome_ml.egg-info
+creating smarthome_ml-0.0.0/tests
+copying files to smarthome_ml-0.0.0...
+copying README.md -> smarthome_ml-0.0.0
+copying pyproject.toml -> smarthome_ml-0.0.0
+copying smarthome_ml/__init__.py -> smarthome_ml-0.0.0/smarthome_ml
+copying smarthome_ml/__main__.py -> smarthome_ml-0.0.0/smarthome_ml
+copying smarthome_ml/observations.py -> smarthome_ml-0.0.0/smarthome_ml
+copying smarthome_ml.egg-info/PKG-INFO -> smarthome_ml-0.0.0/smarthome_ml.egg-info
+copying smarthome_ml.egg-info/SOURCES.txt -> smarthome_ml-0.0.0/smarthome_ml.egg-info
+copying smarthome_ml.egg-info/dependency_links.txt -> smarthome_ml-0.0.0/smarthome_ml.egg-info
+copying smarthome_ml.egg-info/entry_points.txt -> smarthome_ml-0.0.0/smarthome_ml.egg-info
+copying smarthome_ml.egg-info/top_level.txt -> smarthome_ml-0.0.0/smarthome_ml.egg-info
+copying tests/test_observations.py -> smarthome_ml-0.0.0/tests
+copying smarthome_ml.egg-info/SOURCES.txt -> smarthome_ml-0.0.0/smarthome_ml.egg-info
+Writing smarthome_ml-0.0.0/setup.cfg
+Creating tar archive
+removing 'smarthome_ml-0.0.0' (and everything under it)
+* Building wheel from sdist
+* Getting build dependencies for wheel...
+running egg_info
+writing smarthome_ml.egg-info/PKG-INFO
+writing dependency_links to smarthome_ml.egg-info/dependency_links.txt
+writing entry points to smarthome_ml.egg-info/entry_points.txt
+writing top-level names to smarthome_ml.egg-info/top_level.txt
+reading manifest file 'smarthome_ml.egg-info/SOURCES.txt'
+writing manifest file 'smarthome_ml.egg-info/SOURCES.txt'
+* Building wheel...
+running bdist_wheel
+running build
+running build_py
+creating build/lib/smarthome_ml
+copying smarthome_ml/observations.py -> build/lib/smarthome_ml
+copying smarthome_ml/__main__.py -> build/lib/smarthome_ml
+copying smarthome_ml/__init__.py -> build/lib/smarthome_ml
+running egg_info
+writing smarthome_ml.egg-info/PKG-INFO
+writing dependency_links to smarthome_ml.egg-info/dependency_links.txt
+writing entry points to smarthome_ml.egg-info/entry_points.txt
+writing top-level names to smarthome_ml.egg-info/top_level.txt
+reading manifest file 'smarthome_ml.egg-info/SOURCES.txt'
+writing manifest file 'smarthome_ml.egg-info/SOURCES.txt'
+installing to build/bdist.linux-x86_64/wheel
+running install
+running install_lib
+creating build/bdist.linux-x86_64/wheel
+creating build/bdist.linux-x86_64/wheel/smarthome_ml
+copying build/lib/smarthome_ml/observations.py -> build/bdist.linux-x86_64/wheel/./smarthome_ml
+copying build/lib/smarthome_ml/__main__.py -> build/bdist.linux-x86_64/wheel/./smarthome_ml
+copying build/lib/smarthome_ml/__init__.py -> build/bdist.linux-x86_64/wheel/./smarthome_ml
+running install_egg_info
+Copying smarthome_ml.egg-info to build/bdist.linux-x86_64/wheel/./smarthome_ml-0.0.0-py3.12.egg-info
+running install_scripts
+creating build/bdist.linux-x86_64/wheel/smarthome_ml-0.0.0.dist-info/WHEEL
+creating '<clean-source>/bin/python/.tmp-k44atqjl/smarthome_ml-0.0.0-py3-none-any.whl' and adding 'build/bdist.linux-x86_64/wheel' to it
+adding 'smarthome_ml/__init__.py'
+adding 'smarthome_ml/__main__.py'
+adding 'smarthome_ml/observations.py'
+adding 'smarthome_ml-0.0.0.dist-info/METADATA'
+adding 'smarthome_ml-0.0.0.dist-info/WHEEL'
+adding 'smarthome_ml-0.0.0.dist-info/entry_points.txt'
+adding 'smarthome_ml-0.0.0.dist-info/top_level.txt'
+adding 'smarthome_ml-0.0.0.dist-info/RECORD'
+removing build/bdist.linux-x86_64/wheel
+Successfully built smarthome_ml-0.0.0.tar.gz and smarthome_ml-0.0.0-py3-none-any.whl
+CLEAN COMMAND: make GO=/snap/go/current/bin/go smoke
+mkdir -p bin
+/snap/go/current/bin/go build -trimpath -o bin/hub ./cmd/hub
+/snap/go/current/bin/go build -trimpath -o bin/screen-client ./cmd/screen-client
+/snap/go/current/bin/go build -trimpath -o bin/bot ./telegram/cmd/bot
+.venv/bin/python scripts/smoke.py
+{
+  "memory_fake": {
+    "/health": {
+      "status": 200,
+      "body": {
+        "live": true,
+        "profile": "test",
+        "simulated": true
+      }
+    },
+    "/ready": {
+      "status": 200,
+      "body": {
+        "phase": "RUNNING",
+        "live": true,
+        "ready": true,
+        "degraded": false,
+        "profile": "test",
+        "simulated": true,
+        "persistent": false,
+        "dependencies": [
+          {
+            "name": "storage",
+            "kind": "memory_fake",
+            "status": "READY",
+            "critical": true,
+            "reason": "simulation only; data is not persisted"
+          },
+          {
+            "name": "adapters",
+            "kind": "synthetic",
+            "status": "READY",
+            "critical": true
+          },
+          {
+            "name": "ml",
+            "kind": "external",
+            "status": "DISABLED",
+            "critical": false
+          },
+          {
+            "name": "mqtt",
+            "kind": "external",
+            "status": "DISABLED",
+            "critical": false
+          }
+        ]
+      }
+    },
+    "/api/v1/version": {
+      "status": 200,
+      "body": {
+        "adapter_mode": "simulation",
+        "api_version": "v1",
+        "auth": "NOT_IMPLEMENTED",
+        "commit": "unknown",
+        "persistent": false,
+        "profile": "test",
+        "simulated": true,
+        "storage_kind": "memory_fake",
+        "version": "development"
+      }
+    },
+    "published": 5,
+    "observed": 5,
+    "exit_code": 0,
+    "listener_closed": true,
+    "secret_redacted": true
+  },
+  "not_implemented": {
+    "/health": {
+      "status": 200,
+      "body": {
+        "live": true,
+        "profile": "test",
+        "simulated": true
+      }
+    },
+    "/ready": {
+      "status": 503,
+      "body": {
+        "phase": "RUNNING",
+        "live": true,
+        "ready": false,
+        "degraded": false,
+        "profile": "test",
+        "simulated": true,
+        "persistent": false,
+        "dependencies": [
+          {
+            "name": "storage",
+            "kind": "not_implemented",
+            "status": "NOT_IMPLEMENTED",
+            "critical": true,
+            "reason": "SQLite begins on day 16"
+          },
+          {
+            "name": "adapters",
+            "kind": "synthetic",
+            "status": "READY",
+            "critical": true
+          },
+          {
+            "name": "ml",
+            "kind": "external",
+            "status": "DISABLED",
+            "critical": false
+          },
+          {
+            "name": "mqtt",
+            "kind": "external",
+            "status": "DISABLED",
+            "critical": false
+          }
+        ]
+      }
+    },
+    "/api/v1/version": {
+      "status": 200,
+      "body": {
+        "adapter_mode": "simulation",
+        "api_version": "v1",
+        "auth": "NOT_IMPLEMENTED",
+        "commit": "unknown",
+        "persistent": false,
+        "profile": "test",
+        "simulated": true,
+        "storage_kind": "not_implemented",
+        "version": "development"
+      }
+    },
+    "published": 5,
+    "observed": 5,
+    "exit_code": 0,
+    "listener_closed": true,
+    "secret_redacted": true
+  }
+}
+.venv/bin/python scripts/config_smoke.py
+{
+  "unknown_key": {
+    "exit_code": 2,
+    "listener_not_started": true,
+    "safe_error": "CONFIG_PARSE: yaml"
+  },
+  "duplicate_key": {
+    "exit_code": 2,
+    "listener_not_started": true,
+    "safe_error": "CONFIG_PARSE: yaml"
+  },
+  "production_closed": {
+    "exit_code": 2,
+    "listener_not_started": true,
+    "safe_error": "NOT_IMPLEMENTED: production auth/storage/hardware"
+  },
+  "hardware_closed": {
+    "exit_code": 2,
+    "listener_not_started": true,
+    "safe_error": "NOT_IMPLEMENTED: hardware adapters"
+  },
+  "public_bind_closed": {
+    "exit_code": 2,
+    "listener_not_started": true,
+    "safe_error": "CONFIG_VALUE: server.host"
+  },
+  "nan_brightness": {
+    "exit_code": 2,
+    "listener_not_started": true,
+    "safe_error": "CONFIG_VALUE: lighting.zone"
+  },
+  "valid_redacted": {
+    "exit_code": 0,
+    "secret_absent": true
+  }
+}
+CLEAN SOURCE QUICKSTART: PASS (fresh venv and node_modules; source copied, not a git checkout)

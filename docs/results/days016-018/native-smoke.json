@@ -1,0 +1,40 @@
+{
+  "bootstrap_once": true,
+  "cli_verification": true,
+  "first_process": {
+    "ready_status": 200,
+    "persistent": true,
+    "simulated": true,
+    "login_valid": 503,
+    "login_invalid": 401,
+    "login_throttled": 429,
+    "flood_health": 200,
+    "flood_statuses": [
+      401,
+      429
+    ],
+    "observed": 20,
+    "shutdown_exit": 0,
+    "no_session_or_secret": true,
+    "persisted_cooldown_checked": false
+  },
+  "restart_process": {
+    "ready_status": 503,
+    "persistent": true,
+    "simulated": true,
+    "login_valid": 503,
+    "login_invalid": 401,
+    "login_throttled": 429,
+    "flood_health": 200,
+    "flood_statuses": [
+      401,
+      429
+    ],
+    "observed": 30,
+    "shutdown_exit": 0,
+    "no_session_or_secret": true,
+    "persisted_cooldown_checked": true
+  },
+  "private_data_and_no_plaintext": true,
+  "temporary_data_cleaned": true
+}

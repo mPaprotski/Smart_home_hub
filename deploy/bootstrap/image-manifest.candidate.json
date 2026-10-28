@@ -1,0 +1,13 @@
+{
+  "release_candidate": "Ubuntu Server 26.04.1 LTS arm64+raspi",
+  "image_filename": "ubuntu-26.04.1-preinstalled-server-arm64+raspi.img.xz",
+  "source_directory": "https://cdimage.ubuntu.com/releases/26.04/release/",
+  "checksums_url": "https://cdimage.ubuntu.com/releases/26.04/release/SHA256SUMS",
+  "published_sha256": "d59ef9c6e85b906995501f166d00726ab80b59be7b65cdeac0fa31b996053e13",
+  "metadata_fetch": "PASS-HOST",
+  "image_downloaded": false,
+  "image_checksum_verified": false,
+  "signature_verified": false,
+  "pi_installed": false,
+  "note": "Published hash fetched over HTTPS; image bytes/signature/EEPROM/audio/camera must be checked on the target"
+}

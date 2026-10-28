@@ -1,0 +1,75 @@
+{
+  "schema_version": 1,
+  "status": "draft_missing_measurements",
+  "date": "2026-10-25",
+  "target_from_spec": {
+    "board": "Raspberry Pi 4 Model B",
+    "ram_gb": 2,
+    "os_family": "Ubuntu Server",
+    "led_type": "WS2812B",
+    "led_density_per_m": 60,
+    "led_supply_v": 5.0
+  },
+  "inventory": {
+    "pi": {
+      "board": "Raspberry Pi 4 Model B",
+      "ram_gb": 2,
+      "confirmed_by_user": "2026-10-26",
+      "configured_ssh_access": false
+    },
+    "pi_power_supply": null,
+    "cooling": null,
+    "storage": null,
+    "led_strips": null,
+    "led_power_supply": null,
+    "usb_camera": null,
+    "pi_camera": null,
+    "sensors": null,
+    "audio_outputs": null,
+    "test_laptops": null
+  },
+  "measurements": {
+    "monitor_top_m": null,
+    "monitor_right_m": null,
+    "monitor_bottom_m": null,
+    "monitor_left_m": null,
+    "monitor_top_leds": null,
+    "monitor_right_leds": null,
+    "monitor_bottom_leds": null,
+    "monitor_left_leds": null,
+    "desk_strip_m": null,
+    "desk_leds": null,
+    "pi_to_first_led_m": null,
+    "monitor_dout_to_desk_din_m": null,
+    "psu_to_monitor_m": null,
+    "psu_to_desk_m": null,
+    "sensor_cable_m": null
+  },
+  "unconfirmed_design_assumptions": {
+    "led_full_white_max_ma_per_pixel": 60.0,
+    "led_idle_ma_per_pixel": 1.0,
+    "led_psu_auxiliary_a": 0.1,
+    "psu_headroom_factor": 1.25,
+    "wire_drop_target_v": 0.25,
+    "candidate_led_transport": "spi0_single_chain_two_logical_zones",
+    "candidate_i2c_bus_hz": 100000,
+    "candidate_ambient_sensor": "VEML7700 breakout at 3.3V",
+    "candidate_temperature_humidity_sensor": "BME280 breakout at 3.3V",
+    "candidate_air_quality_sensor": "SGP40 breakout at 3.3V",
+    "candidate_motion_sensor": "Panasonic EKMC1601111 at 3.3V"
+  },
+  "notes": [
+    "null means unknown, not absent or zero",
+    "Candidates and numerical assumptions are not approved purchases or measured hardware properties",
+    "The 120-LED example in the specification is not a measured monitor LED count",
+    "No installation or hardware test has been performed",
+    "2026-10-26: user confirmed only Pi4B 2GB is available; all memory planning must use this target"
+  ],
+  "user_instruction": "Measurements are not available; prepare illustrative alternatives with explicit assumptions",
+  "pi_access": {
+    "status": "owned_board_not_accessible_for_execution",
+    "user_reply": "User owns Raspberry Pi 4B with 2GB RAM; no configured SSH target provided",
+    "ssh_target": null,
+    "physical_experiments": "BLOCKED"
+  }
+}

@@ -1,0 +1,411 @@
+{
+  "client_date": "2026-10-25",
+  "environment_kind": "developer_host_not_pi",
+  "suite": "days004-010-feasibility",
+  "results": {
+    "environment": {
+      "probe": "D06-environment",
+      "status": "PASS-HOST",
+      "executed_at_utc": "2026-10-25T20:31:20.729185+00:00",
+      "client_date": "2026-10-25",
+      "checks": [
+        "read-only OS/architecture/version/device inventory"
+      ],
+      "environment": {
+        "os": {
+          "NAME": "Ubuntu",
+          "VERSION_ID": "24.04",
+          "VERSION": "24.04.4 LTS (Noble Numbat)",
+          "ID": "ubuntu"
+        },
+        "architecture": "x86_64",
+        "pi_model": null,
+        "is_pi4": false,
+        "device_counts": {
+          "audio": 11,
+          "camera": 2,
+          "gpio": 0,
+          "i2c": 6,
+          "spi": 0
+        },
+        "systemd_pid1": true,
+        "versions": {
+          "python": {
+            "exit_code": 0,
+            "version": [
+              "Python 3.12.3"
+            ]
+          },
+          "pipewire": {
+            "exit_code": 0,
+            "version": [
+              "pipewire",
+              "Compiled with libpipewire 1.0.5"
+            ]
+          },
+          "wireplumber": {
+            "exit_code": 0,
+            "version": [
+              "wireplumber",
+              "Compiled with libwireplumber 0.4.17"
+            ]
+          },
+          "ffmpeg": {
+            "exit_code": 0,
+            "version": [
+              "ffmpeg version 6.1.1-3ubuntu5 Copyright (c) 2000-2023 the FFmpeg developers",
+              "built with gcc 13 (Ubuntu 13.2.0-23ubuntu3)"
+            ]
+          },
+          "openssl": {
+            "exit_code": 0,
+            "version": [
+              "OpenSSL 3.0.13 30 Jan 2024 (Library: OpenSSL 3.0.13 30 Jan 2024)"
+            ]
+          },
+          "go": {
+            "exit_code": 0,
+            "version": [
+              "go version go1.27.3 linux/amd64"
+            ]
+          }
+        },
+        "display_environment_present": {
+          "DISPLAY": true,
+          "WAYLAND_DISPLAY": true
+        },
+        "modules": {
+          "PIL": true,
+          "onnxruntime": false,
+          "numpy": false
+        }
+      },
+      "pi_installation": "NOT_RUN",
+      "target_status": "BLOCKED_NO_PI",
+      "runner_elapsed_ms": 479.535
+    },
+    "zones": {
+      "checks": [
+        "two independent slices",
+        "six invalid mappings rejected",
+        "zone limits then global 6A",
+        "idle floor rejected",
+        "zero frame"
+      ],
+      "hardware_io": false,
+      "language": "Go",
+      "limited_current_a": 5.959529411764655,
+      "probe": "D04-zone-frame",
+      "status": "PASS-SIM",
+      "synthetic_led_count": 240,
+      "runner_elapsed_ms": 878.066
+    },
+    "pcm": {
+      "probe": "D04-PCM",
+      "status": "PASS-HOST",
+      "executed_at_utc": "2026-10-25T20:31:21.849176+00:00",
+      "client_date": "2026-10-25",
+      "checks": [
+        "FFmpeg synthetic source→PCM pipe",
+        "48kHz stereo S16LE",
+        "tone sample count/frequency/RMS",
+        "silence"
+      ],
+      "tone": {
+        "sample_frames": 12000,
+        "rms": 0.06248659217275888,
+        "peak": 0.08837890625,
+        "frequency_estimate_hz": 1000.0,
+        "active_frequency_estimate_hz": 1000.0
+      },
+      "silence": {
+        "sample_frames": 12000,
+        "rms": 0.0,
+        "peak": 0.0,
+        "frequency_estimate_hz": 0.0,
+        "active_frequency_estimate_hz": null
+      },
+      "physical_playback": "BLOCKED_NO_AUDIO_DEVICE",
+      "persisted_pcm": false,
+      "scope": "decoder/format only; not a production playback monitor",
+      "runner_elapsed_ms": 236.576
+    },
+    "pipewire": {
+      "probe": "D04-PipeWire",
+      "status": "PASS-HOST",
+      "executed_at_utc": "2026-10-25T20:31:23.886278+00:00",
+      "client_date": "2026-10-25",
+      "checks": [
+        "isolated null sink",
+        "synthetic playback→sink monitor→PCM",
+        "consumer stop/reconnect leaves playback alive"
+      ],
+      "first_capture": {
+        "sample_frames": 24576,
+        "rms": 0.13428996024958362,
+        "peak": 0.1983642578125,
+        "frequency_estimate_hz": 917.96875,
+        "active_frequency_estimate_hz": 1001.4204545454545
+      },
+      "second_capture": {
+        "sample_frames": 24576,
+        "rms": 0.13429443181641532,
+        "peak": 0.1983642578125,
+        "frequency_estimate_hz": 916.015625,
+        "active_frequency_estimate_hz": 999.2454170180656
+      },
+      "physical_audio": "BLOCKED_NO_DEVICE",
+      "bluetooth": "BLOCKED_NO_ADAPTER",
+      "persisted_pcm": false,
+      "host_audio_modified": false,
+      "runner_elapsed_ms": 2096.076
+    },
+    "screen": {
+      "probe": "D05-screen",
+      "status": "PASS-SIM",
+      "executed_at_utc": "2026-10-25T20:31:24.122181+00:00",
+      "client_date": "2026-10-25",
+      "checks": [
+        "weighted four-edge golden fixture",
+        "ten invalid/replayed packet cases rejected"
+      ],
+      "synthetic_colors": {
+        "top": [
+          [
+            255,
+            0,
+            0
+          ],
+          [
+            255,
+            0,
+            0
+          ]
+        ],
+        "right": [
+          [
+            0,
+            255,
+            0
+          ],
+          [
+            0,
+            255,
+            0
+          ]
+        ],
+        "bottom": [
+          [
+            0,
+            0,
+            255
+          ],
+          [
+            0,
+            0,
+            255
+          ]
+        ],
+        "left": [
+          [
+            255,
+            255,
+            0
+          ],
+          [
+            255,
+            255,
+            0
+          ]
+        ]
+      },
+      "elapsed_ms": 1.3311299844644964,
+      "live_capture": {
+        "status": "NOT_RUN",
+        "reason": "use --live-capture for a single RAM-only frame"
+      },
+      "other_targets": {
+        "Windows_x86_64": "BLOCKED_NO_TARGET",
+        "macOS_arm64": "BLOCKED_NO_TARGET",
+        "macOS_x86_64": "BLOCKED_NO_TARGET"
+      },
+      "screenshots_saved": false,
+      "runner_elapsed_ms": 175.951
+    },
+    "inference": {
+      "probe": "D05-inference",
+      "status": "PASS-HOST",
+      "executed_at_utc": "2026-10-25T20:31:26.385987+00:00",
+      "client_date": "2026-10-25",
+      "checks": [
+        "separate stdlib Python worker",
+        "bounded inference queue",
+        "at most one inference request per second",
+        "worker failure does not stop synthetic colors loop"
+      ],
+      "duration_s": 2.2009248260001186,
+      "synthetic_frames": 66,
+      "request_times_s": [
+        1.975015038624406e-06,
+        1.000849817006383,
+        2.001152359007392
+      ],
+      "successful_inferences": 2,
+      "worker_failure_detected": true,
+      "is_project_scene_model": false,
+      "embedded_onnx_runtime": "NOT_RUN_MISSING_DEPENDENCY",
+      "runner_elapsed_ms": 2279.975
+    },
+    "thermal": {
+      "probe": "D07-thermal",
+      "status": "PASS-SIM",
+      "executed_at_utc": "2026-10-25T20:31:26.529111+00:00",
+      "client_date": "2026-10-25",
+      "checks": [
+        "four states",
+        "rising/falling hysteresis boundaries",
+        "six invalid sensor cases fail to fan ON"
+      ],
+      "synthetic_temperatures_c": [
+        45,
+        50,
+        49.9,
+        48,
+        47,
+        46.9,
+        65,
+        64.9,
+        62,
+        61.9,
+        75,
+        74,
+        72,
+        71.9
+      ],
+      "states": [
+        "NORMAL",
+        "WARM",
+        "WARM",
+        "WARM",
+        "WARM",
+        "NORMAL",
+        "HOT",
+        "HOT",
+        "HOT",
+        "WARM",
+        "CRITICAL",
+        "CRITICAL",
+        "CRITICAL",
+        "HOT"
+      ],
+      "physical_fan": "BLOCKED_NO_PI",
+      "hardware_sysfs_writes": false,
+      "defaults": "proposed only; calibration pending",
+      "runner_elapsed_ms": 124.443
+    },
+    "hil": {
+      "probe": "D08-HIL-gate",
+      "status": "BLOCKED",
+      "executed_at_utc": "2026-10-25T20:31:26.595680+00:00",
+      "client_date": "2026-10-25",
+      "checks": [],
+      "target": {
+        "target": "Raspberry Pi 4",
+        "is_pi4": false,
+        "architecture": "x86_64",
+        "temperature_c": null,
+        "devices": {
+          "gpio": 0,
+          "i2c": 6,
+          "spi": 0,
+          "camera": 2
+        },
+        "status": "BLOCKED_NO_PI",
+        "mutations_performed": false,
+        "secrets_collected": false
+      },
+      "hardware_cases": {
+        "D08-01": {
+          "status": "BLOCKED",
+          "reason": "target Pi/LED/audio fixture not available for this session"
+        },
+        "D08-02": {
+          "status": "BLOCKED",
+          "reason": "target Pi/LED/audio fixture not available for this session"
+        },
+        "D08-03": {
+          "status": "BLOCKED",
+          "reason": "target Pi/LED/audio fixture not available for this session"
+        },
+        "D08-04": {
+          "status": "BLOCKED",
+          "reason": "target Pi/LED/audio fixture not available for this session"
+        },
+        "D08-05": {
+          "status": "BLOCKED",
+          "reason": "target Pi/LED/audio fixture not available for this session"
+        },
+        "D08-06": {
+          "status": "BLOCKED",
+          "reason": "target Pi/LED/audio fixture not available for this session"
+        },
+        "D08-07": {
+          "status": "BLOCKED",
+          "reason": "target Pi/LED/audio fixture not available for this session"
+        },
+        "D08-08": {
+          "status": "BLOCKED",
+          "reason": "target Pi/LED/audio fixture not available for this session"
+        },
+        "D08-09": {
+          "status": "BLOCKED",
+          "reason": "target Pi/LED/audio fixture not available for this session"
+        },
+        "D08-10": {
+          "status": "BLOCKED",
+          "reason": "target Pi/LED/audio fixture not available for this session"
+        }
+      },
+      "gpio_writes": false,
+      "reason": "user confirmed Pi absent or not configured; no SSH target",
+      "runner_elapsed_ms": 68.604
+    },
+    "https": {
+      "probe": "D09-HTTPS",
+      "status": "PASS-HOST",
+      "executed_at_utc": "2026-10-25T20:31:28.231588+00:00",
+      "client_date": "2026-10-25",
+      "checks": [
+        "ephemeral CA→server SAN smarthome.local",
+        "loopback HTTPS proxy→loopback backend",
+        "untrusted CA rejected",
+        "wrong hostname rejected",
+        "control routes absent/mutations rejected",
+        "certificate replacement under same CA",
+        "private key mode0600/temp cleanup"
+      ],
+      "bind_scope": "127.0.0.1 only",
+      "mdns": "BLOCKED_NO_PI_LAN_TARGET",
+      "phone_trust": "BLOCKED_NO_CLIENT",
+      "production_proxy": "NOT_RUN_NO_CADDY_NGINX",
+      "system_trust_changed": false,
+      "ca_private_key_persisted": false,
+      "runner_elapsed_ms": 1720.216
+    },
+    "python_unittests": {
+      "status": "PASS-HOST",
+      "exit_code": 0,
+      "summary": "test_corner_exclusion (test_experiments.AnalyzerTests.test_corner_exclusion) ... ok\ntest_pcm_rejects_partial_or_empty_frame (test_experiments.AnalyzerTests.test_pcm_rejects_partial_or_empty_frame) ... ok\ntest_small_ragged_and_invalid_geometry (test_experiments.AnalyzerTests.test_small_ragged_and_invalid_geometry) ... ok\ntest_weighted_average_is_not_uniform_average (test_experiments.AnalyzerTests.test_weighted_average_is_not_uniform_average) ... ok\ntest_bad_features (test_experiments.InferenceTests.test_bad_features) ... ok\ntest_monotonic_probabilities (test_experiments.InferenceTests.test_monotonic_probabilities) ... ok\ntest_worker_bounds_and_invalid_json (test_experiments.InferenceTests.test_worker_bounds_and_invalid_json) ... ok\ntest_bad_fields_and_bindings (test_experiments.StreamTests.test_bad_fields_and_bindings) ... ok\ntest_duplicate_rejected (test_experiments.StreamTests.test_duplicate_rejected) ... ok\ntest_extra_image_field_rejected (test_experiments.StreamTests.test_extra_image_field_rejected) ... ok\ntest_missing_pixel (test_experiments.StreamTests.test_missing_pixel) ... ok\ntest_rgb_ranges_types_and_lengths (test_experiments.StreamTests.test_rgb_ranges_types_and_lengths) ... ok\ntest_valid_packet (test_experiments.StreamTests.test_valid_packet) ... ok\ntest_configuration_ordering (test_experiments.ThermalTests.test_configuration_ordering) ... ok\ntest_extremes_skip_intermediate_states (test_experiments.ThermalTests.test_extremes_skip_intermediate_states) ... ok\ntest_hysteresis_prevents_chatter (test_experiments.ThermalTests.test_hysteresis_prevents_chatter) ... ok\ntest_invalid_input_keeps_cooling (test_experiments.ThermalTests.test_invalid_input_keeps_cooling) ... ok\n\n----------------------------------------------------------------------\nRan 17 tests in 0.087s\n\nOK\n"
+    },
+    "go_tests": {
+      "status": "PASS-HOST",
+      "exit_code": 0,
+      "summary": "ok  \t_<workspace>/experiments/day004\t1.115s\n"
+    }
+  },
+  "elapsed_s": 10.91,
+  "m0": {
+    "status": "M0_NOT_READY",
+    "reason": "Pi installation/hardware/LAN/mobile evidence unavailable; host/simulation checks do not close these gates"
+  }
+}

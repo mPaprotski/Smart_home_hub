@@ -1,0 +1,10 @@
+goos: linux
+goarch: amd64
+pkg: github.com/mPaprotski/Smart_home_hub/internal/events
+cpu: Intel(R) Core(TM) i5-8250U CPU @ 1.60GHz
+BenchmarkPublish/none-8         	  230826	      4547 ns/op	     456 B/op	       6 allocs/op
+BenchmarkPublish/one_slow-8     	  195164	      5907 ns/op	     488 B/op	       8 allocs/op
+BenchmarkPublish/ten_slow-8     	   82636	     14025 ns/op	     776 B/op	      26 allocs/op
+BenchmarkPublish/hundred_slow-8 	   13177	     93067 ns/op	    3662 B/op	     205 allocs/op
+PASS
+ok  	github.com/mPaprotski/Smart_home_hub/internal/events	5.718s

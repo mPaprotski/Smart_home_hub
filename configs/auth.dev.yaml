@@ -1,0 +1,11 @@
+# Pi4B/2GB target; explicit HTTPS development profile, synthetic adapters.
+profile: development
+adapter_mode: simulation
+storage: sqlite
+server:
+  tls_cert: .runtime/private/server.pem
+  tls_key: .runtime/private/server.key
+auth:
+  enabled: true
+  required: true
+  public_origin: https://localhost:8443

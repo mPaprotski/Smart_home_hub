@@ -1,0 +1,34 @@
+[build-system]
+requires = ["setuptools==80.9.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "smarthome-ml"
+version = "0.0.0"
+description = "Smart Home Hub observation contracts; ML inference is not implemented"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = []
+
+[project.scripts]
+smarthome-ml = "smarthome_ml.__main__:main"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["smarthome_ml*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
+
+[tool.mypy]
+python_version = "3.12"
+strict = true
+files = ["smarthome_ml"]
+
+[tool.ruff]
+target-version = "py312"
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]

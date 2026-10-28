@@ -1,0 +1,10 @@
+# Explicit persistent development profile; all devices remain synthetic.
+profile: development
+adapter_mode: simulation
+storage: sqlite
+sqlite:
+  path: .runtime/data/hub.db
+  busy_timeout: 500ms
+  startup_timeout: 10s
+auth:
+  required: false # Core-only dev readiness. Sessions remain NOT_IMPLEMENTED on day 18.

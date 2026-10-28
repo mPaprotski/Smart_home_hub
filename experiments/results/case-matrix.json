@@ -1,0 +1,343 @@
+{
+  "schema_version": 1,
+  "client_date": "2026-10-25",
+  "user_confirmed_pi_unavailable": true,
+  "cases": [
+    {
+      "day": 4,
+      "id": "D04-01",
+      "check": "Two logical slices",
+      "status": "PASS-SIM",
+      "note": "Go fixture240LED, independent slices; physical driver not used"
+    },
+    {
+      "day": 4,
+      "id": "D04-02",
+      "check": "Physical local playback",
+      "status": "BLOCKED",
+      "note": "No soundcard exposed; virtual sink is separate host evidence"
+    },
+    {
+      "day": 4,
+      "id": "D04-03",
+      "check": "Monitor PCM",
+      "status": "PASS-HOST",
+      "note": "Isolated PipeWire null sink→monitor; 48kHz stereo S16LE, no physical source"
+    },
+    {
+      "day": 4,
+      "id": "D04-04",
+      "check": "Silence/consumer restart",
+      "status": "PASS-HOST",
+      "note": "FFmpeg silence and monitor consumer reconnect; physical output restart pending"
+    },
+    {
+      "day": 4,
+      "id": "D04-05",
+      "check": "Bluetooth input",
+      "status": "BLOCKED",
+      "note": "No target adapter/phone session; system D-Bus not available"
+    },
+    {
+      "day": 4,
+      "id": "D04-06",
+      "check": "Permissions inventory",
+      "status": "DOC-ONLY",
+      "note": "Own temp sockets tested; Pi/container device rights unknown"
+    },
+    {
+      "day": 4,
+      "id": "D04-07",
+      "check": "Transport/audio hypothesis",
+      "status": "DOC-ONLY",
+      "note": "SPI candidate preserved; physical proof deferred"
+    },
+    {
+      "day": 5,
+      "id": "D05-01",
+      "check": "Four-target matrix",
+      "status": "DOC-ONLY",
+      "note": "Linux current display unavailable; Windows/macOS targets not supplied"
+    },
+    {
+      "day": 5,
+      "id": "D05-02",
+      "check": "Synthetic analyzer",
+      "status": "PASS-SIM",
+      "note": "Weighted edge fixtures and strict packet validator executed"
+    },
+    {
+      "day": 5,
+      "id": "D05-03",
+      "check": "Live capture / cleanup",
+      "status": "BLOCKED",
+      "note": "Pillow capture returns OSError; no screenshot file created"
+    },
+    {
+      "day": 5,
+      "id": "D05-04",
+      "check": "Inference separation",
+      "status": "PASS-HOST",
+      "note": "Tiny synthetic Python worker; bounded queue, <=1Hz and worker failure fallback"
+    },
+    {
+      "day": 5,
+      "id": "D05-05",
+      "check": "Performance method",
+      "status": "DOC-ONLY",
+      "note": "All8 target measurement methods and reference profiles specified"
+    },
+    {
+      "day": 5,
+      "id": "D05-06",
+      "check": "Dataset/quality policy",
+      "status": "DOC-ONLY",
+      "note": "Synthetic/licensed policy, split, pilot/freeze and provisional gates; actual model quality NOT_RUN"
+    },
+    {
+      "day": 6,
+      "id": "D06-01",
+      "check": "Pi/OS/architecture",
+      "status": "BLOCKED",
+      "note": "Current host x86_64, no Pi access; published image metadata fetched only"
+    },
+    {
+      "day": 6,
+      "id": "D06-02",
+      "check": "Headless SSH",
+      "status": "BLOCKED",
+      "note": "No SSH target; no board installation performed"
+    },
+    {
+      "day": 6,
+      "id": "D06-03",
+      "check": "Target storage",
+      "status": "BLOCKED",
+      "note": "No Pi storage selected or written"
+    },
+    {
+      "day": 6,
+      "id": "D06-04",
+      "check": "Pi power/cooling",
+      "status": "BLOCKED",
+      "note": "No physical PSU/fan/thermal evidence"
+    },
+    {
+      "day": 6,
+      "id": "D06-05",
+      "check": "Pi LAN/clock",
+      "status": "BLOCKED",
+      "note": "Current host metadata is not Pi evidence"
+    },
+    {
+      "day": 6,
+      "id": "D06-06",
+      "check": "Reinstall guide",
+      "status": "DOC-ONLY",
+      "note": "Private seed templates, install/recovery guide, read-only preflight and candidate image manifest ready"
+    },
+    {
+      "day": 7,
+      "id": "D07-01",
+      "check": "Physical pinmux/wiring",
+      "status": "BLOCKED",
+      "note": "No target board; draft map preserved"
+    },
+    {
+      "day": 7,
+      "id": "D07-02",
+      "check": "GPIO input/output",
+      "status": "BLOCKED",
+      "note": "No gpiochip devices; no writes performed"
+    },
+    {
+      "day": 7,
+      "id": "D07-03",
+      "check": "Sensor I2C read",
+      "status": "BLOCKED",
+      "note": "No bus/module; no blind scans"
+    },
+    {
+      "day": 7,
+      "id": "D07-04",
+      "check": "SPI timing/rights",
+      "status": "BLOCKED",
+      "note": "No spidev target; host logic is synthetic only"
+    },
+    {
+      "day": 7,
+      "id": "D07-05",
+      "check": "Thermal policy",
+      "status": "PASS-SIM",
+      "note": "State/hysteresis/error tests executed without sysfs writes"
+    },
+    {
+      "day": 7,
+      "id": "D07-06",
+      "check": "Physical thermal load/fan",
+      "status": "BLOCKED",
+      "note": "No Pi/fan; deliberately no heating unrelated host"
+    },
+    {
+      "day": 7,
+      "id": "D07-07",
+      "check": "Permissions matrix",
+      "status": "DOC-ONLY",
+      "note": "Host/container design recorded; target negative-access tests NOT_RUN"
+    },
+    {
+      "day": 8,
+      "id": "D08-01",
+      "check": "Independent hardware zones",
+      "status": "BLOCKED",
+      "note": "No configured Pi/LED/audio fixture; protocol and preflight prepared"
+    },
+    {
+      "day": 8,
+      "id": "D08-02",
+      "check": "Analog audio plus LED",
+      "status": "BLOCKED",
+      "note": "No configured Pi/LED/audio fixture; protocol and preflight prepared"
+    },
+    {
+      "day": 8,
+      "id": "D08-03",
+      "check": "Bluetooth input/PCM plus LED",
+      "status": "BLOCKED",
+      "note": "No configured Pi/LED/audio fixture; protocol and preflight prepared"
+    },
+    {
+      "day": 8,
+      "id": "D08-04",
+      "check": "USB output",
+      "status": "BLOCKED",
+      "note": "No configured Pi/LED/audio fixture; protocol and preflight prepared"
+    },
+    {
+      "day": 8,
+      "id": "D08-05",
+      "check": "Bluetooth output/concurrency",
+      "status": "BLOCKED",
+      "note": "No configured Pi/LED/audio fixture; protocol and preflight prepared"
+    },
+    {
+      "day": 8,
+      "id": "D08-06",
+      "check": "PCM failure isolation on Pi",
+      "status": "BLOCKED",
+      "note": "No configured Pi/LED/audio fixture; protocol and preflight prepared"
+    },
+    {
+      "day": 8,
+      "id": "D08-07",
+      "check": "Physical frame cadence",
+      "status": "BLOCKED",
+      "note": "No configured Pi/LED/audio fixture; protocol and preflight prepared"
+    },
+    {
+      "day": 8,
+      "id": "D08-08",
+      "check": "Intended target permissions",
+      "status": "BLOCKED",
+      "note": "No configured Pi/LED/audio fixture; protocol and preflight prepared"
+    },
+    {
+      "day": 8,
+      "id": "D08-09",
+      "check": "Power-off/restart/partial-power",
+      "status": "BLOCKED",
+      "note": "No configured Pi/LED/audio fixture; protocol and preflight prepared"
+    },
+    {
+      "day": 8,
+      "id": "D08-10",
+      "check": "Target repeatability",
+      "status": "BLOCKED",
+      "note": "No configured Pi/LED/audio fixture; protocol and preflight prepared"
+    },
+    {
+      "day": 9,
+      "id": "D09-01",
+      "check": "LAN mDNS resolution",
+      "status": "BLOCKED",
+      "note": "No target publisher/mobile LAN; templates not applied"
+    },
+    {
+      "day": 9,
+      "id": "D09-02",
+      "check": "Pi phone/laptop trusted TLS",
+      "status": "BLOCKED",
+      "note": "Only loopback CA/SAN/proxy verified; no mobile/system trust installation"
+    },
+    {
+      "day": 9,
+      "id": "D09-03",
+      "check": "Negative TLS verification",
+      "status": "PASS-HOST",
+      "note": "Untrusted CA and wrong hostname rejected"
+    },
+    {
+      "day": 9,
+      "id": "D09-04",
+      "check": "Internal upstream isolation",
+      "status": "PASS-HOST",
+      "note": "Both listeners loopback-only, no control routes, POST405; Pi firewall pending"
+    },
+    {
+      "day": 9,
+      "id": "D09-05",
+      "check": "Target reboot/services",
+      "status": "BLOCKED",
+      "note": "No Pi/systemd target"
+    },
+    {
+      "day": 9,
+      "id": "D09-06",
+      "check": "Certificate replacement",
+      "status": "PASS-HOST",
+      "note": "Two leaf certificates signed by ephemeral CA; private temp files removed"
+    },
+    {
+      "day": 9,
+      "id": "D09-07",
+      "check": "Public artifact hygiene",
+      "status": "PASS-HOST",
+      "note": "Examples/redacted summaries; no generated keys/screenshots/PCM/DB persisted"
+    },
+    {
+      "day": 10,
+      "id": "D10-01",
+      "check": "Evidence inventory",
+      "status": "PASS-HOST",
+      "note": "Case levels and limitations recorded for all planned days"
+    },
+    {
+      "day": 10,
+      "id": "D10-02",
+      "check": "Independent local replay",
+      "status": "PASS-HOST",
+      "note": "Two independent probe process trees, same outcomes/deterministic fixtures"
+    },
+    {
+      "day": 10,
+      "id": "D10-03",
+      "check": "Clean Pi install replay",
+      "status": "BLOCKED",
+      "note": "No Pi/media; not replaced with host process restart"
+    },
+    {
+      "day": 10,
+      "id": "D10-04",
+      "check": "Critical physical regression",
+      "status": "BLOCKED",
+      "note": "Physical gates still lack evidence"
+    },
+    {
+      "day": 10,
+      "id": "D10-05",
+      "check": "Risk/ADR/estimate review",
+      "status": "DOC-ONLY",
+      "note": "Physical parts provisional; independent Core scaffold may proceed, M0 not closed"
+    }
+  ]
+}

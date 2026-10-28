@@ -1,0 +1,12 @@
+CREATE TABLE users(id TEXT PRIMARY KEY, username TEXT NOT NULL UNIQUE, password_hash TEXT NOT NULL CHECK(length(password_hash)>0), enabled INTEGER NOT NULL CHECK(enabled IN(0,1)), timezone TEXT NOT NULL, created_at INTEGER NOT NULL);
+CREATE TABLE roles(id TEXT PRIMARY KEY);
+CREATE TABLE user_roles(user_id TEXT NOT NULL REFERENCES users(id) ON DELETE CASCADE, role_id TEXT NOT NULL REFERENCES roles(id), PRIMARY KEY(user_id,role_id));
+CREATE TABLE role_permissions(role_id TEXT NOT NULL REFERENCES roles(id), scope TEXT NOT NULL, PRIMARY KEY(role_id,scope));
+INSERT INTO roles(id) VALUES('admin'),('viewer');
+INSERT INTO role_permissions VALUES('admin','settings:write'),('admin','lights:write'),('viewer','settings:read');
+CREATE TABLE sessions(id_hash TEXT PRIMARY KEY, user_id TEXT NOT NULL REFERENCES users(id) ON DELETE CASCADE, expires_at INTEGER NOT NULL, revoked_at INTEGER);
+CREATE INDEX sessions_user ON sessions(user_id);
+CREATE INDEX sessions_expiry ON sessions(expires_at);
+CREATE TABLE devices(id TEXT PRIMARY KEY, kind TEXT NOT NULL, adapter_id TEXT NOT NULL, configured_enabled INTEGER NOT NULL CHECK(configured_enabled IN(0,1)));
+CREATE TABLE zones(id TEXT PRIMARY KEY, device_id TEXT REFERENCES devices(id), owner_id TEXT REFERENCES users(id), mode TEXT NOT NULL CHECK(mode IN('OFF','STATIC')), brightness REAL NOT NULL CHECK(brightness>=0 AND brightness<=1), revision INTEGER NOT NULL CHECK(revision>0));
+CREATE TABLE user_settings(user_id TEXT NOT NULL REFERENCES users(id) ON DELETE CASCADE, key TEXT NOT NULL, value TEXT NOT NULL, schema_version INTEGER NOT NULL CHECK(schema_version=1), revision INTEGER NOT NULL CHECK(revision>0), PRIMARY KEY(user_id,key));

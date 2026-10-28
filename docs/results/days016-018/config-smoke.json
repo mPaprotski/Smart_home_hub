@@ -1,0 +1,36 @@
+{
+  "unknown_key": {
+    "exit_code": 2,
+    "listener_not_started": true,
+    "safe_error": "CONFIG_PARSE: yaml"
+  },
+  "duplicate_key": {
+    "exit_code": 2,
+    "listener_not_started": true,
+    "safe_error": "CONFIG_PARSE: yaml"
+  },
+  "production_closed": {
+    "exit_code": 2,
+    "listener_not_started": true,
+    "safe_error": "NOT_IMPLEMENTED: production auth/storage/hardware"
+  },
+  "hardware_closed": {
+    "exit_code": 2,
+    "listener_not_started": true,
+    "safe_error": "NOT_IMPLEMENTED: hardware adapters"
+  },
+  "public_bind_closed": {
+    "exit_code": 2,
+    "listener_not_started": true,
+    "safe_error": "CONFIG_VALUE: server.host"
+  },
+  "nan_brightness": {
+    "exit_code": 2,
+    "listener_not_started": true,
+    "safe_error": "CONFIG_VALUE: lighting.zone"
+  },
+  "valid_redacted": {
+    "exit_code": 0,
+    "secret_absent": true
+  }
+}

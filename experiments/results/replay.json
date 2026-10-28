@@ -1,0 +1,24 @@
+{
+  "status": "PASS-HOST",
+  "scope": "two independent local replay runs",
+  "same_outcomes": true,
+  "deterministic_fixtures_match": true,
+  "m0": "M0_NOT_READY",
+  "durations_s": [
+    9.179,
+    8.64
+  ],
+  "outcomes": {
+    "environment": "PASS-HOST",
+    "zones": "PASS-SIM",
+    "pcm": "PASS-HOST",
+    "pipewire": "PASS-HOST",
+    "screen": "PASS-SIM",
+    "inference": "PASS-HOST",
+    "thermal": "PASS-SIM",
+    "hil": "BLOCKED",
+    "https": "PASS-HOST",
+    "python_unittests": "PASS-HOST",
+    "go_tests": "PASS-HOST"
+  }
+}

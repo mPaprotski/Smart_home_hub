@@ -1,0 +1,74 @@
+{
+  "recorded_local": "2026-10-28",
+  "status": "IMPLEMENTED_AND_LOCALLY_VERIFIED",
+  "scope": "Days019-021 software slice; simulation on x86",
+  "target": "Raspberry Pi 4B 2 GB RAM only",
+  "schema_version": 7,
+  "source_state": "uncommitted workspace; no push",
+  "tests": {
+    "go_test_functions": 67,
+    "go_race": "PASS-HOST",
+    "python_cases": 14,
+    "quality_gate": "PASS-HOST",
+    "native_https": "PASS-SIM",
+    "compose_https": "PASS-COMPOSE",
+    "legacy_native_persistence": "PASS-SIM",
+    "legacy_compose_persistence_actual_readonly_mount": "PASS-COMPOSE",
+    "workflow_syntax": "PASS-HOST",
+    "remote_ci": "NOT_RUN"
+  },
+  "plan_checks": {
+    "D19-01": "PASS-HOST/SIM",
+    "D19-02": "PASS-HOST/SIM",
+    "D19-03": "PASS-HOST/SIM",
+    "D19-04": "PASS-HOST/SIM",
+    "D19-05": "PASS-HOST/SIM",
+    "D19-06": "PASS-HOST/SIM",
+    "D19-07": "PASS-HOST/SIM",
+    "D19-08": "PASS-HOST/SIM",
+    "D19-09": "PASS-HOST/SIM",
+    "D20-01": "PASS-HOST/SIM",
+    "D20-02": "PASS-HOST/SIM",
+    "D20-03": "PASS-HOST/SIM",
+    "D20-04": "PASS-HOST/SIM",
+    "D20-05": "PASS-HOST/SIM",
+    "D20-06": "PASS-HOST/SIM",
+    "D20-07": "PASS-HOST/SIM",
+    "D20-08": "PASS-HOST/SIM",
+    "D20-09": "PASS-HOST/SIM",
+    "D21-01": "PASS-HOST/SIM",
+    "D21-02": "PASS-HOST/SIM",
+    "D21-03": "PASS-HOST/SIM",
+    "D21-04": "PASS-HOST/SIM",
+    "D21-05": "PASS-HOST/SIM",
+    "D21-06": "PASS-HOST/SIM",
+    "D21-07": "PASS-HOST/SIM",
+    "D21-08": "PASS-HOST/SIM"
+  },
+  "memory": {
+    "core_hard_limit_bytes": 134217728,
+    "core_soft_limit": "96MiB",
+    "core_swap_bytes": 0,
+    "compose_https_peak_bytes": [
+      48230400,
+      27439104
+    ],
+    "persistence_flood_peak_bytes": 69844992,
+    "pi_hardware_measured": false,
+    "full_project_2gb_fit_proven": false
+  },
+  "vulnerabilities": {
+    "reachable": 0,
+    "imported": 0,
+    "unimported_required_module_advisory": "GO-2026-5932"
+  },
+  "remaining": [
+    "Pi physical M0 and RAM/HIL tests",
+    "UI and business WS/snapshot/reconnect days022-025",
+    "collector/training/automation runtime",
+    "full privacy deletion and backup erasure",
+    "resource degradation controller",
+    "remote CI and M1 review"
+  ],
+  "timezone": "Europe/Minsk"
+}

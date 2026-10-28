@@ -1,0 +1,244 @@
+mkdir -p bin
+/snap/go/current/bin/go build -trimpath -o bin/hub ./cmd/hub
+/snap/go/current/bin/go build -trimpath -o bin/screen-client ./cmd/screen-client
+/snap/go/current/bin/go build -trimpath -o bin/bot ./telegram/cmd/bot
+.venv/bin/python scripts/auth_smoke.py
+{
+  "login_https": true,
+  "csrf_origin_enforced": true,
+  "cookie_flags": true,
+  "one_time_token_reveal": true,
+  "ambiguous_auth_rejected": true,
+  "session_after_restart": true,
+  "token_after_restart": true,
+  "setting_revision": 2,
+  "revoke_before_cached_retry": true,
+  "audit_rows": 5,
+  "audit_redacted": true,
+  "logout": true,
+  "auth_required_ready": 200,
+  "process_exit": 0,
+  "observed_each_process": [
+    13,
+    8
+  ],
+  "ca_verified": true,
+  "tls_keys_removed": true
+}
+.venv/bin/python scripts/smoke.py
+{
+  "memory_fake": {
+    "/health": {
+      "status": 200,
+      "body": {
+        "live": true,
+        "profile": "test",
+        "simulated": true
+      }
+    },
+    "/ready": {
+      "status": 200,
+      "body": {
+        "phase": "RUNNING",
+        "live": true,
+        "ready": true,
+        "degraded": false,
+        "profile": "test",
+        "simulated": true,
+        "persistent": false,
+        "dependencies": [
+          {
+            "name": "storage",
+            "kind": "memory_fake",
+            "status": "READY",
+            "critical": true,
+            "reason": "simulation only; data is not persisted"
+          },
+          {
+            "name": "adapters",
+            "kind": "synthetic",
+            "status": "READY",
+            "critical": true
+          },
+          {
+            "name": "ml",
+            "kind": "external",
+            "status": "DISABLED",
+            "critical": false
+          },
+          {
+            "name": "mqtt",
+            "kind": "external",
+            "status": "DISABLED",
+            "critical": false
+          }
+        ]
+      }
+    },
+    "/api/v1/version": {
+      "status": 200,
+      "body": {
+        "adapter_mode": "simulation",
+        "api_version": "v1",
+        "auth": "NOT_IMPLEMENTED",
+        "commit": "unknown",
+        "persistent": false,
+        "profile": "test",
+        "simulated": true,
+        "storage_kind": "memory_fake",
+        "version": "development"
+      }
+    },
+    "published": 5,
+    "observed": 5,
+    "exit_code": 0,
+    "listener_closed": true,
+    "secret_redacted": true
+  },
+  "not_implemented": {
+    "/health": {
+      "status": 200,
+      "body": {
+        "live": true,
+        "profile": "test",
+        "simulated": true
+      }
+    },
+    "/ready": {
+      "status": 503,
+      "body": {
+        "phase": "RUNNING",
+        "live": true,
+        "ready": false,
+        "degraded": false,
+        "profile": "test",
+        "simulated": true,
+        "persistent": false,
+        "dependencies": [
+          {
+            "name": "storage",
+            "kind": "not_implemented",
+            "status": "NOT_IMPLEMENTED",
+            "critical": true,
+            "reason": "SQLite begins on day 16"
+          },
+          {
+            "name": "adapters",
+            "kind": "synthetic",
+            "status": "READY",
+            "critical": true
+          },
+          {
+            "name": "ml",
+            "kind": "external",
+            "status": "DISABLED",
+            "critical": false
+          },
+          {
+            "name": "mqtt",
+            "kind": "external",
+            "status": "DISABLED",
+            "critical": false
+          }
+        ]
+      }
+    },
+    "/api/v1/version": {
+      "status": 200,
+      "body": {
+        "adapter_mode": "simulation",
+        "api_version": "v1",
+        "auth": "NOT_IMPLEMENTED",
+        "commit": "unknown",
+        "persistent": false,
+        "profile": "test",
+        "simulated": true,
+        "storage_kind": "not_implemented",
+        "version": "development"
+      }
+    },
+    "published": 5,
+    "observed": 5,
+    "exit_code": 0,
+    "listener_closed": true,
+    "secret_redacted": true
+  }
+}
+.venv/bin/python scripts/config_smoke.py
+{
+  "unknown_key": {
+    "exit_code": 2,
+    "listener_not_started": true,
+    "safe_error": "CONFIG_PARSE: yaml"
+  },
+  "duplicate_key": {
+    "exit_code": 2,
+    "listener_not_started": true,
+    "safe_error": "CONFIG_PARSE: yaml"
+  },
+  "production_closed": {
+    "exit_code": 2,
+    "listener_not_started": true,
+    "safe_error": "NOT_IMPLEMENTED: production auth/storage/hardware"
+  },
+  "hardware_closed": {
+    "exit_code": 2,
+    "listener_not_started": true,
+    "safe_error": "NOT_IMPLEMENTED: hardware adapters"
+  },
+  "public_bind_closed": {
+    "exit_code": 2,
+    "listener_not_started": true,
+    "safe_error": "CONFIG_VALUE: server.host"
+  },
+  "nan_brightness": {
+    "exit_code": 2,
+    "listener_not_started": true,
+    "safe_error": "CONFIG_VALUE: lighting.zone"
+  },
+  "valid_redacted": {
+    "exit_code": 0,
+    "secret_absent": true
+  }
+}
+.venv/bin/python scripts/persistence_smoke.py
+{
+  "bootstrap_once": true,
+  "cli_verification": true,
+  "first_process": {
+    "ready_status": 200,
+    "persistent": true,
+    "simulated": true,
+    "login_valid": 503,
+    "login_invalid": 401,
+    "login_throttled": 429,
+    "flood_health": 200,
+    "flood_statuses": [
+      401,
+      429
+    ],
+    "observed": 20,
+    "shutdown_exit": 0,
+    "no_session_or_secret": true,
+    "persisted_cooldown_checked": false
+  },
+  "restart_process": {
+    "ready_status": 503,
+    "persistent": true,
+    "simulated": true,
+    "login_valid": 503,
+    "login_invalid": 401,
+    "login_throttled": 429,
+    "flood_health": 200,
+    "flood_statuses": [
+      401,
+      429
+    ],
+    "observed": 25,
+    "shutdown_exit": 0,
+    "no_session_or_secret": true,
+    "persisted_cooldown_checked": true
+  },
+  "private_data_and_no_plaintext": true,
+  "temporary_data_cleaned": true
+}

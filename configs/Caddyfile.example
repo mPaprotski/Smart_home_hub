@@ -1,0 +1,8 @@
+# Deployment candidate, not installed/validated by the Python TLS spike.
+# This root must not contain .env, keys, DB or backups.
+https://smarthome.local {
+    tls internal
+    reverse_proxy 127.0.0.1:8080
+}
+# For a bootstrap smoke test port 8080 must be a loopback-only status stub.
+# Caddy's root trust on the Pi does not install trust on phone/laptop clients.

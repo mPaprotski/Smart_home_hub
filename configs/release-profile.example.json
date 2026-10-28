@@ -1,0 +1,30 @@
+{
+  "schema_version": 1,
+  "status": "design_template_not_deployed",
+  "name": "pi-full",
+  "baseline_critical": [
+    "core",
+    "sqlite",
+    "lighting_adapter",
+    "audio_adapter"
+  ],
+  "degradation_allowed": [
+    "ml_runtime",
+    "mqtt",
+    "telegram_upstream",
+    "spotify_upstream"
+  ],
+  "release_local_smoke_required": [
+    "core",
+    "frontend",
+    "ml_runtime",
+    "mqtt",
+    "telegram_bot"
+  ],
+  "note": "External upstream outage is distinct from a broken mandatory local service image",
+  "target": {
+    "board": "Raspberry Pi 4 Model B",
+    "ram_gb": 2,
+    "resource_budget": "pi4b-2gb-budget.example.json"
+  }
+}

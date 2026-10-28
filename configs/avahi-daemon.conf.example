@@ -1,0 +1,9 @@
+# Merge carefully with actual distro config; do not overwrite a host configuration.
+[server]
+host-name=smarthome
+use-ipv4=yes
+use-ipv6=yes
+[reflector]
+enable-reflector=no
+[publish]
+publish-addresses=yes

@@ -1,0 +1,12 @@
+{
+  "date_local": "2026-10-26",
+  "timezone": "Europe/Minsk",
+  "reason": "Explicit owner instruction: only Raspberry Pi 4B with 2GB RAM is available",
+  "spec_version": "1.1",
+  "previous_spec_sha256": "84bf6c3c61b2feff16a23a12226b9646d33b4ffde3754b9c0082db0e4c57ec09",
+  "new_spec_sha256": "0a3cd42efe59990cc25157910370871d9c37ae2b33c9d0b6bfd405668803ee6c",
+  "target_ram_gb": 2,
+  "physical_ssh_target_available": false,
+  "historical_evidence_rewritten": false,
+  "resource_budget": "../../../configs/pi4b-2gb-budget.example.json"
+}

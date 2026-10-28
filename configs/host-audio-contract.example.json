@@ -1,0 +1,13 @@
+{
+  "schema_version": 1,
+  "status": "candidate_not_pi_validated",
+  "host_service": "dedicated PipeWire/WirePlumber with BlueZ integration",
+  "core_access": "scoped host IPC adapter; no full host run mount",
+  "pcm": {"rate": 48000, "channels": 2, "sample_format": "S16LE", "byte_order": "little", "candidate_chunk_frames": 480},
+  "buffer_policy": "bounded; analysis overflow cannot block playback",
+  "sources_required": ["bluetooth_a2dp", "spotify_connect", "local_files"],
+  "outputs_required": ["analog_3_5mm", "usb_audio", "bluetooth"],
+  "host_probe_versions": {"pipewire": "1.0.5", "wireplumber": "0.4.17"},
+  "target_versions": null,
+  "note": "WirePlumber 0.4 configuration must not be copied to 0.5 without migration"
+}

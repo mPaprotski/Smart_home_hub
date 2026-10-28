@@ -1,0 +1,90 @@
+{
+  "schema_version": 1,
+  "status": "planning_budget_not_physical_measurement",
+  "confirmed_by_user": "2026-10-26",
+  "target": {
+    "board": "Raspberry Pi 4 Model B",
+    "ram_gb": 2,
+    "nominal_mib": 2048,
+    "only_available_board": true
+  },
+  "planning_mib": {
+    "os_kernel_docker": 512,
+    "core_hard_limit": 128,
+    "ml_runtime_candidate": 384,
+    "host_audio_candidate": 192,
+    "mqtt_candidate": 48,
+    "telegram_bot_candidate": 32,
+    "static_frontend_proxy_candidate": 32,
+    "other_services_candidate": 128
+  },
+  "total_candidate_mib": 1456,
+  "whole_system_working_envelope_mib": 1536,
+  "nominal_reserve_mib": 512,
+  "minimum_measured_memavailable_mib_candidate": 256,
+  "enforced_now": {
+    "dev_core_memory_mib": 128,
+    "dev_core_memory_swap_total_mib": 128,
+    "go_soft_memory_mib": 96,
+    "concurrent_argon2_jobs": 1
+  },
+  "not_enforced_or_validated": [
+    "future service budgets are candidates, not measured capacity guarantees",
+    "usable MemTotal and reserved memory must be measured on the Pi",
+    "combined ML/CV/DSP/training fit and performance require physical tests"
+  ],
+  "policy": {
+    "full_monitoring_default": false,
+    "frontend_vite_on_pi_production": false,
+    "build_on_pi_required": false,
+    "swap_counts_as_ram": false,
+    "remove_features_without_explicit_spec_change": false,
+    "python_runtime_processes_candidate": 1,
+    "model_loading": "lazy_on_demand",
+    "always_load_all_models": false,
+    "postgresql_in_scope": false,
+    "kubernetes_in_scope": false,
+    "heavy_python_workers_in_scope": false,
+    "host_ssd_swap": "optional_not_configured",
+    "cpu_and_thermal_also_require_measurement": true
+  },
+  "placement": {
+    "pi": "control_plane_and_hardware_hub",
+    "laptop": [
+      "screen_capture",
+      "ambilight_analysis",
+      "scene_ml"
+    ]
+  },
+  "normal_memory_target": {
+    "metric": "1 - MemAvailable / MemTotal",
+    "maximum_fraction_candidate": 0.75,
+    "preferred_fraction_candidate": 0.7,
+    "available_headroom_fraction_candidate": [
+      0.25,
+      0.3
+    ],
+    "includes_os": true,
+    "ignore_reclaimable_cache_as_irrevocably_used": true
+  },
+  "preservation_priority_highest_first": [
+    "smart_home_core",
+    "lighting",
+    "audio",
+    "automation",
+    "ambilight",
+    "sensors_mqtt",
+    "presence",
+    "gesture_ml",
+    "other_ml"
+  ],
+  "degradation_policy": {
+    "implemented": false,
+    "order": "reverse_preservation_priority",
+    "safety_auth_emergency_off_always_core": true,
+    "cv_absent_presence_state": "UNKNOWN",
+    "scene_ml_required_for_color_stream": false,
+    "recovery_requires_hysteresis_and_valid_permissions": true,
+    "model_unload_must_be_measured": true
+  }
+}

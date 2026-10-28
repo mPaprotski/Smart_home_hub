@@ -1,0 +1,15 @@
+{
+  "status": "PASS-HOST",
+  "checks": [
+    "two independent replay suites without FAIL",
+    "17 Python tests and 3 Go tests with race detector",
+    "1000 randomized limiter cases",
+    "all local Markdown links and JSON/Python syntax checked",
+    "367 requirement IDs, 35 questions, 180 plan days preserved",
+    "48 unique scoped case outcomes, zero PASS-PI",
+    "source TZ hash unchanged",
+    "no private key/media/DB in public evidence directories"
+  ],
+  "m0": "M0_NOT_READY",
+  "hardware_blockers_confirmed_by_user": true
+}

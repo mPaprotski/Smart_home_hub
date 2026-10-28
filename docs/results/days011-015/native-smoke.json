@@ -1,0 +1,138 @@
+{
+  "memory_fake": {
+    "/health": {
+      "status": 200,
+      "body": {
+        "live": true,
+        "profile": "test",
+        "simulated": true
+      }
+    },
+    "/ready": {
+      "status": 200,
+      "body": {
+        "phase": "RUNNING",
+        "live": true,
+        "ready": true,
+        "degraded": false,
+        "profile": "test",
+        "simulated": true,
+        "persistent": false,
+        "dependencies": [
+          {
+            "name": "storage",
+            "kind": "memory_fake",
+            "status": "READY",
+            "critical": true,
+            "reason": "simulation only; data is not persisted"
+          },
+          {
+            "name": "adapters",
+            "kind": "synthetic",
+            "status": "READY",
+            "critical": true
+          },
+          {
+            "name": "ml",
+            "kind": "external",
+            "status": "DISABLED",
+            "critical": false
+          },
+          {
+            "name": "mqtt",
+            "kind": "external",
+            "status": "DISABLED",
+            "critical": false
+          }
+        ]
+      }
+    },
+    "/api/v1/version": {
+      "status": 200,
+      "body": {
+        "adapter_mode": "simulation",
+        "api_version": "v1",
+        "auth": "NOT_IMPLEMENTED",
+        "commit": "unknown",
+        "persistent": false,
+        "profile": "test",
+        "simulated": true,
+        "storage_kind": "memory_fake",
+        "version": "development"
+      }
+    },
+    "published": 5,
+    "observed": 5,
+    "exit_code": 0,
+    "listener_closed": true,
+    "secret_redacted": true
+  },
+  "not_implemented": {
+    "/health": {
+      "status": 200,
+      "body": {
+        "live": true,
+        "profile": "test",
+        "simulated": true
+      }
+    },
+    "/ready": {
+      "status": 503,
+      "body": {
+        "phase": "RUNNING",
+        "live": true,
+        "ready": false,
+        "degraded": false,
+        "profile": "test",
+        "simulated": true,
+        "persistent": false,
+        "dependencies": [
+          {
+            "name": "storage",
+            "kind": "not_implemented",
+            "status": "NOT_IMPLEMENTED",
+            "critical": true,
+            "reason": "SQLite begins on day 16"
+          },
+          {
+            "name": "adapters",
+            "kind": "synthetic",
+            "status": "READY",
+            "critical": true
+          },
+          {
+            "name": "ml",
+            "kind": "external",
+            "status": "DISABLED",
+            "critical": false
+          },
+          {
+            "name": "mqtt",
+            "kind": "external",
+            "status": "DISABLED",
+            "critical": false
+          }
+        ]
+      }
+    },
+    "/api/v1/version": {
+      "status": 200,
+      "body": {
+        "adapter_mode": "simulation",
+        "api_version": "v1",
+        "auth": "NOT_IMPLEMENTED",
+        "commit": "unknown",
+        "persistent": false,
+        "profile": "test",
+        "simulated": true,
+        "storage_kind": "not_implemented",
+        "version": "development"
+      }
+    },
+    "published": 5,
+    "observed": 5,
+    "exit_code": 0,
+    "listener_closed": true,
+    "secret_redacted": true
+  }
+}

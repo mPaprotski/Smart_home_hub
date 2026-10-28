@@ -1,0 +1,148 @@
+.venv/bin/ruff format --check ml
+5 files already formatted
+scripts/npm.sh run format:check
+
+> smart-home-hub-frontend@0.0.0 format:check
+> prettier --check .
+
+Checking formatting...
+All matched files use Prettier code style!
+/snap/go/current/bin/go vet ./cmd/... ./internal/... ./telegram/...
+.venv/bin/ruff check ml
+All checks passed!
+scripts/npm.sh run lint
+
+> smart-home-hub-frontend@0.0.0 lint
+> eslint .
+
+.venv/bin/mypy --config-file ml/pyproject.toml ml/smarthome_ml
+Success: no issues found in 3 source files
+scripts/npm.sh run typecheck
+
+> smart-home-hub-frontend@0.0.0 typecheck
+> tsc --noEmit
+
+/snap/go/current/bin/go test -race ./cmd/... ./internal/... ./telegram/...
+?   	github.com/mPaprotski/Smart_home_hub/cmd/hub	[no test files]
+?   	github.com/mPaprotski/Smart_home_hub/cmd/screen-client	[no test files]
+ok  	github.com/mPaprotski/Smart_home_hub/internal/api	1.083s
+ok  	github.com/mPaprotski/Smart_home_hub/internal/app	(cached)
+?   	github.com/mPaprotski/Smart_home_hub/internal/buildinfo	[no test files]
+ok  	github.com/mPaprotski/Smart_home_hub/internal/config	(cached)
+ok  	github.com/mPaprotski/Smart_home_hub/internal/devices	(cached)
+ok  	github.com/mPaprotski/Smart_home_hub/internal/events	(cached)
+?   	github.com/mPaprotski/Smart_home_hub/internal/logging	[no test files]
+ok  	github.com/mPaprotski/Smart_home_hub/internal/simulation	(cached)
+ok  	github.com/mPaprotski/Smart_home_hub/internal/storage	(cached)
+ok  	github.com/mPaprotski/Smart_home_hub/internal/system	(cached)
+?   	github.com/mPaprotski/Smart_home_hub/telegram/cmd/bot	[no test files]
+.venv/bin/python -m pytest ml/tests -q
+..............                                                           [100%]
+14 passed in 0.10s
+.venv/bin/python -m openapi_spec_validator docs/api/openapi.yaml
+docs/api/openapi.yaml: OK
+mkdir -p bin
+/snap/go/current/bin/go build -trimpath -o bin/hub ./cmd/hub
+/snap/go/current/bin/go build -trimpath -o bin/screen-client ./cmd/screen-client
+/snap/go/current/bin/go build -trimpath -o bin/bot ./telegram/cmd/bot
+scripts/npm.sh run build
+
+> smart-home-hub-frontend@0.0.0 build
+> tsc --noEmit && vite build
+
+vite v8.3.5 building client environment for production...
+transforming...
+✓ 16 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                   0.42 kB │ gzip:  0.30 kB
+dist/assets/index-BIAQemqo.css    0.44 kB │ gzip:  0.29 kB
+dist/assets/index-BRL7C0L2.js   220.65 kB │ gzip: 69.35 kB
+
+✓ built in 1.95s
+.venv/bin/python -m build --no-isolation --outdir bin/python ml
+* Getting build dependencies for sdist...
+running egg_info
+writing smarthome_ml.egg-info/PKG-INFO
+writing dependency_links to smarthome_ml.egg-info/dependency_links.txt
+writing entry points to smarthome_ml.egg-info/entry_points.txt
+writing top-level names to smarthome_ml.egg-info/top_level.txt
+reading manifest file 'smarthome_ml.egg-info/SOURCES.txt'
+writing manifest file 'smarthome_ml.egg-info/SOURCES.txt'
+* Building sdist...
+running sdist
+running egg_info
+writing smarthome_ml.egg-info/PKG-INFO
+writing dependency_links to smarthome_ml.egg-info/dependency_links.txt
+writing entry points to smarthome_ml.egg-info/entry_points.txt
+writing top-level names to smarthome_ml.egg-info/top_level.txt
+reading manifest file 'smarthome_ml.egg-info/SOURCES.txt'
+writing manifest file 'smarthome_ml.egg-info/SOURCES.txt'
+running check
+creating smarthome_ml-0.0.0
+creating smarthome_ml-0.0.0/smarthome_ml
+creating smarthome_ml-0.0.0/smarthome_ml.egg-info
+creating smarthome_ml-0.0.0/tests
+copying files to smarthome_ml-0.0.0...
+copying README.md -> smarthome_ml-0.0.0
+copying pyproject.toml -> smarthome_ml-0.0.0
+copying smarthome_ml/__init__.py -> smarthome_ml-0.0.0/smarthome_ml
+copying smarthome_ml/__main__.py -> smarthome_ml-0.0.0/smarthome_ml
+copying smarthome_ml/observations.py -> smarthome_ml-0.0.0/smarthome_ml
+copying smarthome_ml.egg-info/PKG-INFO -> smarthome_ml-0.0.0/smarthome_ml.egg-info
+copying smarthome_ml.egg-info/SOURCES.txt -> smarthome_ml-0.0.0/smarthome_ml.egg-info
+copying smarthome_ml.egg-info/dependency_links.txt -> smarthome_ml-0.0.0/smarthome_ml.egg-info
+copying smarthome_ml.egg-info/entry_points.txt -> smarthome_ml-0.0.0/smarthome_ml.egg-info
+copying smarthome_ml.egg-info/top_level.txt -> smarthome_ml-0.0.0/smarthome_ml.egg-info
+copying tests/test_observations.py -> smarthome_ml-0.0.0/tests
+copying smarthome_ml.egg-info/SOURCES.txt -> smarthome_ml-0.0.0/smarthome_ml.egg-info
+Writing smarthome_ml-0.0.0/setup.cfg
+Creating tar archive
+removing 'smarthome_ml-0.0.0' (and everything under it)
+* Building wheel from sdist
+* Getting build dependencies for wheel...
+running egg_info
+writing smarthome_ml.egg-info/PKG-INFO
+writing dependency_links to smarthome_ml.egg-info/dependency_links.txt
+writing entry points to smarthome_ml.egg-info/entry_points.txt
+writing top-level names to smarthome_ml.egg-info/top_level.txt
+reading manifest file 'smarthome_ml.egg-info/SOURCES.txt'
+writing manifest file 'smarthome_ml.egg-info/SOURCES.txt'
+* Building wheel...
+running bdist_wheel
+running build
+running build_py
+creating build/lib/smarthome_ml
+copying smarthome_ml/observations.py -> build/lib/smarthome_ml
+copying smarthome_ml/__main__.py -> build/lib/smarthome_ml
+copying smarthome_ml/__init__.py -> build/lib/smarthome_ml
+running egg_info
+writing smarthome_ml.egg-info/PKG-INFO
+writing dependency_links to smarthome_ml.egg-info/dependency_links.txt
+writing entry points to smarthome_ml.egg-info/entry_points.txt
+writing top-level names to smarthome_ml.egg-info/top_level.txt
+reading manifest file 'smarthome_ml.egg-info/SOURCES.txt'
+writing manifest file 'smarthome_ml.egg-info/SOURCES.txt'
+installing to build/bdist.linux-x86_64/wheel
+running install
+running install_lib
+creating build/bdist.linux-x86_64/wheel
+creating build/bdist.linux-x86_64/wheel/smarthome_ml
+copying build/lib/smarthome_ml/observations.py -> build/bdist.linux-x86_64/wheel/./smarthome_ml
+copying build/lib/smarthome_ml/__main__.py -> build/bdist.linux-x86_64/wheel/./smarthome_ml
+copying build/lib/smarthome_ml/__init__.py -> build/bdist.linux-x86_64/wheel/./smarthome_ml
+running install_egg_info
+Copying smarthome_ml.egg-info to build/bdist.linux-x86_64/wheel/./smarthome_ml-0.0.0-py3.12.egg-info
+running install_scripts
+creating build/bdist.linux-x86_64/wheel/smarthome_ml-0.0.0.dist-info/WHEEL
+creating '<repo>/bin/python/.tmp-y8h358vx/smarthome_ml-0.0.0-py3-none-any.whl' and adding 'build/bdist.linux-x86_64/wheel' to it
+adding 'smarthome_ml/__init__.py'
+adding 'smarthome_ml/__main__.py'
+adding 'smarthome_ml/observations.py'
+adding 'smarthome_ml-0.0.0.dist-info/METADATA'
+adding 'smarthome_ml-0.0.0.dist-info/WHEEL'
+adding 'smarthome_ml-0.0.0.dist-info/entry_points.txt'
+adding 'smarthome_ml-0.0.0.dist-info/top_level.txt'
+adding 'smarthome_ml-0.0.0.dist-info/RECORD'
+removing build/bdist.linux-x86_64/wheel
+Successfully built smarthome_ml-0.0.0.tar.gz and smarthome_ml-0.0.0-py3-none-any.whl
